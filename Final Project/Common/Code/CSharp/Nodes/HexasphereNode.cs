@@ -28,8 +28,14 @@ public class HexasphereNode : Node
         var sphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Blue Sphere.tscn");
         var greenSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Green Sphere.tscn");
         var redSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Red Sphere.tscn");
-        var hexagonTestScene = (PackedScene)ResourceLoader.Load("res://Hexagon Levels/Generic Square Maze/Generic Maze.tscn"); //Hexagon
-        var pentagonTestScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Pentagon.tscn"); //Pentagon, Main
+//		Matt's auto-generated mazes
+//		var hexagonTestScene = (PackedScene)ResourceLoader.Load("res://Hexagon Levels/Generic Square Maze/Generic Maze.tscn"); //Hexagon
+//      var pentagonTestScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Pentagon.tscn"); //Pentagon, Main
+
+//		Jan's hex-mazes used in place of pentagons, nothing works right
+        var pentagonTestScene = (PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"); //Hexagon
+        var hexagonTestScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"); //Pentagon, Main
+		
         var numberOfTiles = h.GetTiles().Count;
         //Create all the tiles
         foreach (var tile in h.GetTiles()) {
