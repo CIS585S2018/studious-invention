@@ -6,4 +6,5 @@ Todo List
   * Create/Work on enemies 
   * Create Pentagons with Puzzles 
   * Integrate different types of hexagons into the maze 
+  * Figure out local gravity
   * Add additional items....
