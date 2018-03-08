@@ -12,7 +12,7 @@ source_file="res://assets/ghost.obj"
 source_md5="597bed734582a87123d2e5802cb98f2c"
 
 dest_files=[ "res://.import/ghost.obj-fefdbbc05745e5b0c1bf0f4026af6b41.mesh", "res://.import/ghost.obj-fefdbbc05745e5b0c1bf0f4026af6b41.mesh" ]
-dest_md5="de898fdbfb8e6e63fe0cd0389d0a3f28"
+dest_md5="1aae0abd281e746b6d70182fd3919540"
 
 [params]
 
