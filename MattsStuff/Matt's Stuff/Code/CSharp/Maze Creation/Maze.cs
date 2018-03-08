@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Godot;
-using Test.Utility;
-namespace Test.MazeCreation
+using FinalProject.Utility;
+namespace FinalProject.MazeCreation
 {
     public class Maze
     {

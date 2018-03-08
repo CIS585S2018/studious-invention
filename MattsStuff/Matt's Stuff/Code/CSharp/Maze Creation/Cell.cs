@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 using System.Collections.Generic;
-namespace Test.MazeCreation
+namespace FinalProject.MazeCreation
 {
     
     public class Cell

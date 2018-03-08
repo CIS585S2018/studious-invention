@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Test.MazeCreation
+namespace FinalProject.MazeCreation
 {
     public enum WallDirection { Horizontal, Vertical };
     public class Wall

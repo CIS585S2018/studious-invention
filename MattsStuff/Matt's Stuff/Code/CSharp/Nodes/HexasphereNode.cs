@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using Test;
+using FinalProject.Hexasphere;
 using System.Collections.Generic;
 
 public class HexasphereNode : Node
@@ -24,12 +24,12 @@ public class HexasphereNode : Node
 
         GD.Print("Number of Tiles: " + h.GetTiles().Count);
         //Load the instances to put in the scene
-        var meshInstance = (PackedScene)ResourceLoader.Load("res://MeshInstance.tscn");
-        var sphereMeshScene = (PackedScene)ResourceLoader.Load("res://SphereMesh.tscn");
-        var greenSphereMeshScene = (PackedScene)ResourceLoader.Load("res://GreenSphereMesh.tscn");
-        var redSphereMeshScene = (PackedScene)ResourceLoader.Load("res://RedSphereMesh.tscn");
-        var hexagonTestScene = (PackedScene)ResourceLoader.Load("res://MattLevel/Main.tscn"); //Hexagon
-        var pentagonTestScene = (PackedScene)ResourceLoader.Load("res://MattLevel/Pentagon.tscn"); //Pentagon, Main
+        var meshInstance = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/MeshInstance.tscn");
+        var sphereMeshScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/SphereMesh.tscn");
+        var greenSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/GreenSphereMesh.tscn");
+        var redSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/RedSphereMesh.tscn");
+        var hexagonTestScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Main.tscn"); //Hexagon
+        var pentagonTestScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Pentagon.tscn"); //Pentagon, Main
         var numberOfTiles = h.GetTiles().Count;
         //Create all the tiles
         foreach (var tile in h.GetTiles()) {
