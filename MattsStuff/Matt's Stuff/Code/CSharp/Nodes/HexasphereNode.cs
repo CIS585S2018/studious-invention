@@ -24,12 +24,12 @@ public class HexasphereNode : Node
 
         GD.Print("Number of Tiles: " + h.GetTiles().Count);
         //Load the instances to put in the scene
-        var meshInstance = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/MeshInstance.tscn");
-        var sphereMeshScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/SphereMesh.tscn");
-        var greenSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/GreenSphereMesh.tscn");
-        var redSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/RedSphereMesh.tscn");
-        var hexagonTestScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Main.tscn"); //Hexagon
-        var pentagonTestScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Pentagon.tscn"); //Pentagon, Main
+        var meshInstance = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Assets/MeshInstance.tscn");
+        var sphereMeshScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Assets/Blue Sphere.tscn");
+        var greenSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Assets/Green Sphere.tscn");
+        var redSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Assets/Red Sphere.tscn");
+        var hexagonTestScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Levels/Generic Maze.tscn"); //Hexagon
+        var pentagonTestScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hexasphere/Assets/Pentagon.tscn"); //Pentagon, Main
         var numberOfTiles = h.GetTiles().Count;
         //Create all the tiles
         foreach (var tile in h.GetTiles()) {
@@ -42,6 +42,7 @@ public class HexasphereNode : Node
         }
     }
 
+    // Creates the hexagon or pentagon instance for the tile.
     public void CreateInstance(Tile tile, PackedScene hexagonTestScene, PackedScene pentagonTestScene, PackedScene redSphereMeshScene, float sphereScale) {
         decimal tileCenterX = 0;
         decimal tileCenterY = 0;
@@ -149,6 +150,7 @@ public class HexasphereNode : Node
         }
     }
 
+    // Creates a wire mesh and places the spheres to make sure the tile is aligned.
     public void CreateMesh(Tile tile, PackedScene sphereMeshScene, PackedScene greenSphereMeshScene, int numberOfTiles, float radius) {
         var surfTool = new SurfaceTool();
         var mesh = new ArrayMesh();
@@ -218,6 +220,7 @@ public class HexasphereNode : Node
         this.AddChild(meshInstance);
     }
 
+    //Not used currently
     public override void _Process(float delta)
     {
         // Called every frame. Delta is time since last frame.

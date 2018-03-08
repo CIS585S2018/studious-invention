@@ -16,17 +16,6 @@ namespace FinalProject.MazeCreation
         public bool IsInPath = false;
         public int DistanceFromEnd = -1;
         public bool HasPathToEnd = false;
-        //Used for distance, creates chains to track for pathing
-        /*
-        public bool LeftFlowsDeeper = null;
-        public bool PastRightCell = null;
-        public bool PastTopCell = null;
-        public bool PastBottomCell = null;
-        public bool NextLeftCell = null;
-        public bool NextRightCell = null;
-        public bool NextTopCell = null;
-        public bool NextBottomCell = null;
-        */
         public Cell(Maze maze, int x, int y)
         {
             this.maze = maze;
