@@ -5,7 +5,7 @@
 [ext_resource path="res://Common/Assets/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hexagon Levels/Generic Square Maze/Assets/Flag.tscn" type="PackedScene" id=4]
 
-[node name="Spatial" type="Spatial" index="0"]
+[node name="Spatial" type="Spatial"]
 
 [node name="Scene Root" parent="." index="0" instance=ExtResource( 1 )]
 
