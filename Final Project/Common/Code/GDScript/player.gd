@@ -42,7 +42,7 @@ func highJump():
 	velocity += self.translation.normalized() * -30;
 	
 func rotateSelfToMatchGravity():
-	self.look_at(Vector3(), Vector3(0, 0, 1))
+	self.look_at(Vector3(), Vector3(0, 1, 0))
 
 func _physics_process(delta):
 	var aim = get_node("yaw").get_global_transform().basis
@@ -60,8 +60,10 @@ func _physics_process(delta):
 	direction = direction.normalized()
 	direction = direction * speed
 	
+	#velocity += direction * self.translation.normalized()
+	
 	calculateGravity()
-	#rotateSelfToMatchGravity();
+	rotateSelfToMatchGravity();
 	
 	#if velocity.y > 0:
 	#	gravity = -20
