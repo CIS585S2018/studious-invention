@@ -22,7 +22,7 @@ public class HexasphereNode : Node
 
         //Jan's hex-mazes used in place of pentagons, nothing works right
         //This is because there are only 12 pentagons
-        pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
+        //pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
         //pentagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Pentagon.tscn"));
         //Don't add any hexagons yet
         //hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));

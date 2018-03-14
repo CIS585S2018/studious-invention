@@ -2,7 +2,8 @@ extends KinematicBody
 #most of the camera control and movement is taken from a tutorial I found online
 var speed = 250
 var direction = Vector3()
-var gravity = -9.8
+var gravitySpeed = -9.8 # meters per second squared
+var gravity = Vector3()
 var velocity = Vector3()
 
 #camera control
@@ -31,6 +32,18 @@ func _enter_scene():
 func _exit_scene():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+func calculateGravity():
+	gravity = -self.translation.normalized() * gravitySpeed;
+	
+func jump():
+	velocity += self.translation.normalized() * -10;
+	
+func highJump():
+	velocity += self.translation.normalized() * -30;
+	
+func rotateSelfToMatchGravity():
+	self.look_at(Vector3(), Vector3(0, 0, 1))
+
 func _physics_process(delta):
 	var aim = get_node("yaw").get_global_transform().basis
 	
@@ -45,23 +58,26 @@ func _physics_process(delta):
 		direction += aim[2]
 	
 	direction = direction.normalized()
-	direction = direction * speed * delta
+	direction = direction * speed
 	
-	if velocity.y > 0:
-		gravity = -20
-	else:
-		gravity = -30
-	velocity.y += gravity * delta
-	velocity.x = direction.x
-	velocity.z = direction.z
+	calculateGravity()
+	#rotateSelfToMatchGravity();
 	
-	velocity = move_and_slide(velocity, Vector3(0, 1, 0))
+	#if velocity.y > 0:
+	#	gravity = -20
+	#else:
+	#	gravity = -30
+	velocity += gravity
+	#velocity += direction
+	
+	velocity = move_and_slide(gravity, -self.translation.normalized() )
 		
 	#jump
+		
 	if is_on_floor() and Input.is_key_pressed(KEY_SPACE):
-		velocity.y = 10
+		jump()
 	if is_on_floor() and Input.is_key_pressed(KEY_H):
-		velocity.y = 20
+		highJump()
 		
 # cast a short ray and call the use() method if the object we hit is usable
 func use_thing():
