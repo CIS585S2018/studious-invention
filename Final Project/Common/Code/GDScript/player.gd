@@ -41,38 +41,57 @@ func jump():
 func highJump():
 	velocity += self.translation.normalized() * -30;
 	
-func rotateSelfToMatchGravity():
-	self.look_at(Vector3(), Vector3(0, 1, 0))
+func rotateSelfToMatchGravity(delta):
+	var t = get_transform()
+	var lookDir = -t.origin 
+	var rotTransform = t.looking_at(lookDir,Vector3(0,1,0))
+	var thisRotation = Quat(t.basis).slerp(rotTransform.basis,delta)
+	#value += delta
+	#if value>1:
+	#	value = 1
+	set_transform(Transform(thisRotation,t.origin))
 
 func _physics_process(delta):
-	var aim = get_node("yaw").get_global_transform().basis
 	
-	direction = Vector3()
-	if Input.is_action_pressed("ui_left") or Input.is_key_pressed(KEY_A):
-		direction -= aim[0]
-	if Input.is_action_pressed("ui_right") or Input.is_key_pressed(KEY_D):
-		direction += aim[0]
-	if Input.is_action_pressed("ui_up") or Input.is_key_pressed(KEY_W):
-		direction -= aim[2]
-	if Input.is_action_pressed("ui_down") or Input.is_key_pressed(KEY_S):
-		direction += aim[2]
-	
-	direction = direction.normalized()
-	direction = direction * speed
+	#var aim = get_node("yaw").get_global_transform().basis
+	#direction = Vector3()
+	#if Input.is_action_pressed("ui_left") or Input.is_key_pressed(KEY_A):
+	#	direction -= aim[0]
+	#if Input.is_action_pressed("ui_right") or Input.is_key_pressed(KEY_D):
+	#	direction += aim[0]
+	#if Input.is_action_pressed("ui_up") or Input.is_key_pressed(KEY_W):
+	#	direction -= aim[2]
+	#if Input.is_action_pressed("ui_down") or Input.is_key_pressed(KEY_S):
+	#	direction += aim[2]
+	#direction = direction.normalized()
+	#direction = direction * speed
 	
 	#velocity += direction * self.translation.normalized()
 	
 	calculateGravity()
-	rotateSelfToMatchGravity();
+	
+	
+	#print("Velocity before")
+	#print(velocity);
+	#print("Gravity")
+	#print(gravity)
+	
+	rotateSelfToMatchGravity(delta);
 	
 	#if velocity.y > 0:
 	#	gravity = -20
 	#else:
 	#	gravity = -30
-	velocity += gravity
+	velocity = velocity + gravity * delta
 	#velocity += direction
 	
-	velocity = move_and_slide(gravity, -self.translation.normalized() )
+	#print("Velocity before move and slide")
+	#print(velocity)
+	
+	velocity = move_and_slide(velocity, -self.translation.normalized() )
+	
+	#print("Velocity after")
+	#print(velocity)
 		
 	#jump
 		
