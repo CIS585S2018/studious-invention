@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://hextile2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Walls.gd" type="Script" id=2]
+[ext_resource path="res://wall_big.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player.tscn" type="PackedScene" id=4]
+
+[node name="Scene Root" type="Spatial" index="0"]
+
+[node name="RigidBody" parent="." index="0" instance=ExtResource( 1 )]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Walls" type="Spatial" parent="." index="1"]
+
+script = ExtResource( 2 )
+
+[node name="StaticBody" parent="Walls" index="0" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 5, 0, 0, 0, 1, 83, 0.5, -18 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2" parent="Walls" index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 0.48481, 0, 0.87462, 0, 5, 0, -0.87462, 0, 0.48481, -40, 0.5, 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Timer" type="Timer" parent="Walls" index="2"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = false
+autostart = true
+
+[node name="KinematicBody" parent="." index="2" instance=ExtResource( 4 )]
+
+[connection signal="timeout" from="Walls/Timer" to="Walls" method="_on_Timer_timeout"]
+
+

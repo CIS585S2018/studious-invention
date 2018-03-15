@@ -2,48 +2,66 @@ using Godot;
 using System;
 using FinalProject.Hexasphere;
 using System.Collections.Generic;
+using FinalProject.MeshUtilities;
 
 public class HexasphereNode : Node
 {
     List<Spatial> hexInstances = new List<Spatial>();
+    PackedScene redSphereMeshScene, greenSphereMeshScene, blueSphereMeshScene, centerStandingPlatform;
+    List<PackedScene> hexagons = new List<PackedScene>();
+    List<PackedScene> pentagons = new List<PackedScene>();
+    Random random = new Random();
     public override void _Ready()
     {
-        // Called every time the node is added to the scene.
-        // Initialization here
-        GD.Print("Hello from the Node CS Script Init");
+        //Load the instances to put in the scene
+        //Load the debug assets
+        centerStandingPlatform = (PackedScene)ResourceLoader.Load("res://Common/Assets/MeshInstance.tscn");
+        blueSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Blue Sphere.tscn");
+        greenSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Green Sphere.tscn");
+        redSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Red Sphere.tscn");
+
+        //Jan's hex-mazes used in place of pentagons, nothing works right
+        //This is because there are only 12 pentagons
+        pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
+        //pentagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Pentagon.tscn"));
+        //Don't add any hexagons yet
+        //hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));
 
         //Define sphere properties
         float radius = 95;
-        float scale = radius;
         int subdivisionCount = 3;
 
         //h is used for creating full size tiles
-        Hexasphere h = new Hexasphere((decimal)radius, subdivisionCount, 1);
-        //h2 is for creating the line mesh
-        Hexasphere h2 = new Hexasphere((decimal)radius, subdivisionCount, 1);
+        Hexasphere hexasphere = new Hexasphere((decimal)radius, subdivisionCount, 1);
 
-        GD.Print("Number of Tiles: " + h.GetTiles().Count);
-        //Load the instances to put in the scene
-        var meshInstance = (PackedScene)ResourceLoader.Load("res://Common/Assets/MeshInstance.tscn");
-        var sphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Blue Sphere.tscn");
-        var greenSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Green Sphere.tscn");
-        var redSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Red Sphere.tscn");
-        var hexagonTestScene = (PackedScene)ResourceLoader.Load("res://Hexagon Levels/Generic Square Maze/Generic Maze.tscn"); //Hexagon
-        var pentagonTestScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Pentagon.tscn"); //Pentagon, Main
-        var numberOfTiles = h.GetTiles().Count;
-        //Create all the tiles
-        foreach (var tile in h.GetTiles()) {
-            CreateInstance(tile, hexagonTestScene, pentagonTestScene, redSphereMeshScene, radius / numberOfTiles);
-        }
-        //Create the line mesh
-        foreach (var tile in h2.GetTiles())
-        {
-            CreateMesh(tile, sphereMeshScene, greenSphereMeshScene, h2.GetTiles().Count, radius*0.99f);
+        GD.Print("Number of Tiles: " + hexasphere.GetTiles().Count);
+		
+        var numberOfTiles = hexasphere.GetTiles().Count;
+        //Create all the scenes that appear on tiles
+        foreach (var tile in hexasphere.GetTiles()) {
+            CreateSceneOnTile(tile, radius / numberOfTiles);
+            CreateMeshForTile(tile, radius / numberOfTiles);
         }
     }
 
+    private Spatial GetRandomHexagon() {
+        if (hexagons.Count == 0) {
+            return null;
+        }
+        return (Spatial)hexagons[random.Next(hexagons.Count)].Instance();
+    }
+
+    private Spatial GetRandomPentagon()
+    {
+        if (pentagons.Count == 0)
+        {
+            return null;
+        }
+        return (Spatial)pentagons[random.Next(pentagons.Count)].Instance();
+    }
+
     // Creates the hexagon or pentagon instance for the tile.
-    public void CreateInstance(Tile tile, PackedScene hexagonTestScene, PackedScene pentagonTestScene, PackedScene redSphereMeshScene, float sphereScale) {
+    private void CreateSceneOnTile(Tile tile, float sphereScale) {
         decimal tileCenterX = 0;
         decimal tileCenterY = 0;
         decimal tileCenterZ = 0;
@@ -80,25 +98,39 @@ public class HexasphereNode : Node
 
         var sphereCenterPoint = new Vector3(0f, 0f, 0f);
 
+        //Create the debug spheres to go on each tile
+        MeshInstance sphere = (MeshInstance)blueSphereMeshScene.Instance();
+        sphere.SetTranslation(tileCenterPoint);
+        sphere.SetScale(new Vector3(sphereScale, sphereScale, sphereScale));
+        this.AddChild(sphere);
+
+        MeshInstance sphere2 = (MeshInstance)greenSphereMeshScene.Instance();
+        sphere2.SetTranslation(firstPoint);
+        sphere2.SetScale(new Vector3(sphereScale, sphereScale, sphereScale));
+        this.AddChild(sphere2);
+
+        MeshInstance sphere3 = (MeshInstance)greenSphereMeshScene.Instance();
+        sphere3.SetTranslation((firstPoint - tileCenterPoint) / 2 + tileCenterPoint);
+        sphere3.SetScale(new Vector3(sphereScale, sphereScale, sphereScale));
+        this.AddChild(sphere3);
+
         //Create the tile instance
         Spatial groundTest = null;
         if (points.Count == 5)
         {
-            GD.Print("Pentagon Radius: " + polygonRadius + ", side length: " + polygonSideLength);
-
+            //GD.Print("Pentagon Radius: " + polygonRadius + ", side length: " + polygonSideLength);
             //Create instance
-            groundTest = (Spatial)pentagonTestScene.Instance();
+            groundTest = GetRandomPentagon();
         }
         else if (points.Count == 6)
         {
-            GD.Print("Hexagon Radius: " + polygonRadius + ", side length: " + polygonSideLength);
-
+            //GD.Print("Hexagon Radius: " + polygonRadius + ", side length: " + polygonSideLength);
             //Create instance
-            groundTest = (Spatial)hexagonTestScene.Instance();
+            groundTest = GetRandomHexagon();
         }
         else
         {
-            GD.Print("Unknown Radius: " + polygonRadius + ", Count: " + points.Count + ", Side Length: " + polygonSideLength);
+            //GD.Print("Unknown Radius: " + polygonRadius + ", Count: " + points.Count + ", Side Length: " + polygonSideLength);
         }
         if (groundTest != null)
         {
@@ -122,10 +154,10 @@ public class HexasphereNode : Node
             var worldGeneratedFirstPoint = firstPoint;
             var localGeneratedFirstPoint = groundTest.ToLocal(worldGeneratedFirstPoint);
 
-            MeshInstance sphere = (MeshInstance)redSphereMeshScene.Instance();
-            sphere.SetTranslation(worldOriginalFirstPoint);
-            sphere.SetScale(new Vector3(sphereScale, sphereScale, sphereScale));
-            this.AddChild(sphere);
+            MeshInstance redSphere = (MeshInstance)redSphereMeshScene.Instance();
+            redSphere.SetTranslation(worldOriginalFirstPoint);
+            redSphere.SetScale(new Vector3(sphereScale, sphereScale, sphereScale));
+            this.AddChild(redSphere);
             //World Original First Point works and is correct
             //Now is there a way I can get the two points and match them up?
             var angleCalcOriginalPoint = worldOriginalFirstPoint - tileCenterPoint;
@@ -146,19 +178,62 @@ public class HexasphereNode : Node
 
 
             var newWorldPoint = groundTest.ToGlobal(localOriginalFirstPoint);
-            GD.Print("Difference: " + (worldGeneratedFirstPoint - newWorldPoint));
+            //GD.Print("Difference: " + (worldGeneratedFirstPoint - newWorldPoint));
         }
     }
 
     // Creates a wire mesh and places the spheres to make sure the tile is aligned.
-    public void CreateMesh(Tile tile, PackedScene sphereMeshScene, PackedScene greenSphereMeshScene, int numberOfTiles, float radius) {
+    private void CreateMeshForTile(Tile tile, float sphereScale) {
+        //Get tile center point
+        decimal tileCenterX = 0;
+        decimal tileCenterY = 0;
+        decimal tileCenterZ = 0;
+        List<Point> points = tile.boundary;
+        //Calculate the average center point and polygon side length.
+        foreach (Point point in points)
+        {
+            tileCenterX += point.x / points.Count;
+            tileCenterY += point.y / points.Count;
+            tileCenterZ += point.z / points.Count;
+        }
+        //Create the center point
+        var tileCenterPoint = new Vector3((float)tileCenterX, (float)tileCenterY, (float)tileCenterZ);
+        GD.Print(tileCenterPoint);
+
+        //Create surface tool
+        var surfaceTool = MeshCreation.CreateSurfaceTool();
+        //Make triangles for polygon
+        for (var index = 0; index < points.Count; index++)
+        {
+            var point = new Vector3((float)points[index].x, (float)points[index].y, (float)points[index].z);
+            Vector3 nextPoint;
+            if (index < points.Count - 1) {
+                nextPoint = new Vector3((float)points[index + 1].x, (float)points[index + 1].y, (float)points[index + 1].z);
+            } else {
+                nextPoint = new Vector3((float)points[0].x, (float)points[0].y, (float)points[0].z);
+            }
+            MeshCreation.AddTriangle(surfaceTool, point, nextPoint, tileCenterPoint, true);
+        }
+        //Add to scene
+        var meshInstance = MeshCreation.CreateMeshInstanceFromMesh(MeshCreation.CreateMeshFromSurfaceTool(surfaceTool));
+        this.AddChild(meshInstance);
+
+
+        /*
         var surfTool = new SurfaceTool();
         var mesh = new ArrayMesh();
         var material = new SpatialMaterial();
         material.SetEmission(new Color(1.0f, 0.0f, 0.0f));
         material.SetAlbedo(new Color(1.0f, 0.0f, 0.0f));
+        surfTool.Begin(Mesh.PrimitiveType.TriangleStrip);
+        //LineLoop - Nothing
+        //Lines - Nothing
+        //LineStrip - Nothing
+        //Points - Nothing
+        //TriangleFan - Nothing
+        //Triangles - Nothing
+        //TriangleStrip - Nothing
         surfTool.SetMaterial(material);
-        surfTool.Begin(Mesh.PrimitiveType.LineLoop);
         decimal tileCenterX = 0;
         decimal tileCenterY = 0;
         decimal tileCenterZ = 0;
@@ -196,8 +271,7 @@ public class HexasphereNode : Node
 
         var sphereCenterPoint = new Vector3(0f, 0f, 0f);
 
-        var sphereScale = radius / numberOfTiles;
-        MeshInstance sphere = (MeshInstance)sphereMeshScene.Instance();
+        MeshInstance sphere = (MeshInstance)blueSphereMeshScene.Instance();
         sphere.SetTranslation(tileCenterPoint);
         sphere.SetScale(new Vector3(sphereScale, sphereScale, sphereScale));
         this.AddChild(sphere);
@@ -217,7 +291,9 @@ public class HexasphereNode : Node
         surfTool.Commit(mesh);
         var meshInstance = new MeshInstance();
         meshInstance.SetMesh(mesh);
+        meshInstance.CreateTrimeshCollision();
         this.AddChild(meshInstance);
+        */
     }
 
     //Not used currently
