@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Hexasphere/Assets/Pentagon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Hexasphere/Assets/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/ClimbingTree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Ladder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Ladder.gd" type="Script" id=5]
+
+[node name="TreePentagon" type="Spatial" index="0"]
+
+[node name="Pentagon" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07907, 0.431218, -3.1554 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="player" parent="." index="1" instance=ExtResource( 2 )]
+
+transform = Transform( -0.926813, 0, 0.375524, 0, 1, 0, -0.375524, 0, -0.926813, -5.67503, 2.36545, 6.4462 )
+
+[node name="ClimbingTree" parent="." index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0.369928, 0.94329, -1.8313 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ladder" parent="." index="3" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 2.01611, 1.41874 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+
