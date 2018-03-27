@@ -22,7 +22,8 @@ public class HexasphereNode : Node
 
         //Jan's hex-mazes used in place of pentagons, nothing works right
         //This is because there are only 12 pentagons
-        pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
+        //pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
+        pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jacob/Main Scene.tscn"));
         //pentagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Pentagon.tscn"));
         //Don't add any hexagons yet
         //hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));
@@ -198,7 +199,10 @@ public class HexasphereNode : Node
         }
         //Create the center point
         var tileCenterPoint = new Vector3((float)tileCenterX, (float)tileCenterY, (float)tileCenterZ);
-        GD.Print(tileCenterPoint);
+        if (points.Count == 5) {
+			tileCenterPoint = tileCenterPoint + (tileCenterPoint.Normalized() * 6);
+		}
+		GD.Print(tileCenterPoint);
 
         //Create surface tool
         var surfaceTool = MeshCreation.CreateSurfaceTool();
@@ -212,6 +216,10 @@ public class HexasphereNode : Node
             } else {
                 nextPoint = new Vector3((float)points[0].x, (float)points[0].y, (float)points[0].z);
             }
+			if (points.Count == 5) {
+				point = point + (point.Normalized() * 6);
+				nextPoint = nextPoint + (nextPoint.Normalized() * 6);
+			}
             MeshCreation.AddTriangle(surfaceTool, point, nextPoint, tileCenterPoint, true);
         }
         //Add to scene
