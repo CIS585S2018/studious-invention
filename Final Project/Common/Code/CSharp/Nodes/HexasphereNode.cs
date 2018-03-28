@@ -25,6 +25,7 @@ public class HexasphereNode : Node
         //pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
         pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jacob/Main Scene.tscn"));
         //pentagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Pentagon.tscn"));
+        hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Generic Square Maze/Generic Maze.tscn"));
         //Don't add any hexagons yet
         //hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));
 
