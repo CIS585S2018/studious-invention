@@ -1,8 +1,4 @@
 extends Spatial
-
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 var state = 1
 var set1
 var set2
@@ -14,12 +10,9 @@ var ghost_parent
 var scene_root
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	self.get_node("Area").set_meta("type","usable")
 	self.get_node("Area").set_meta("name","button")	
 	scene_root = self.get_node("..")
-	print(scene_root)
 #	scene_root.print_tree()
 	wall_parent = scene_root.get_node("walls")
 #	print(wall_parent)

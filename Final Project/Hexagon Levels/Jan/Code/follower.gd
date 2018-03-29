@@ -16,7 +16,9 @@ func onDeath():
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	player = get_node("../player")
+	var scene_root = self.get_node("..")
+	var sphere_root = scene_root.get_node("..")
+	player = sphere_root.get_node("player")
 	self.get_node("Area").set_meta("type","killable")
 	self.get_node("Area").set_meta("name","follower")
 	pass
