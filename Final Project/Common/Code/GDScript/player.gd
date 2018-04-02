@@ -22,7 +22,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera = get_node("yaw/Camera")
 	self.set_meta("name","player")
-	flashlight = get_node("yaw/SpotLight")
+	flashlight = get_node("yaw/Camera/SpotLight")
 	flashlight.visible = false
 
 func _enter_scene():
