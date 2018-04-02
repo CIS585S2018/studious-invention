@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://pentagon_levels/filip/scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://pentagon_levels/filip/prefabs/hands.tscn" type="PackedScene" id=2]
+[ext_resource path="res://pentagon_levels/filip/prefabs/fire_part.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pentagon_levels/filip/prefabs/cold_part.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RayShape" id=1]
+
+length = 1.71894
+
+[sub_resource type="CapsuleShape" id=2]
+
+radius = 1.0
+height = 1.0
+
+[node name="spatnejplayer" type="RigidBody"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+script = ExtResource( 1 )
+
+[node name="leg" type="CollisionShape" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.26714, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="body" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.79165, 0 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="cameraBase" type="Spatial" parent="." index="2"]
+
+[node name="Camera" type="Camera" parent="cameraBase" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35501, 0 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+
+[node name="hands" parent="cameraBase" index="1" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911849, -0.501076 )
+
+[node name="fire_part2" parent="." index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42549, 1.0364, -1.25466 )
+
+[node name="fire_part" parent="." index="4" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52078, 1.10391, -1.39392 )
+
+
