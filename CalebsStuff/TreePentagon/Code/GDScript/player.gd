@@ -40,6 +40,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right") or Input.is_key_pressed(KEY_D):
 		direction += aim[0]
 	if Input.is_action_pressed("ui_up") or Input.is_key_pressed(KEY_W):
+		#if get_node("Area").overlaps_area(get_node("../../Ladder/Area")):
+			#print(get_node("../../Ladder/Area"));
+			#direction = get_node("../../Ladder/Area").get_global_transform.basis[1];
 		direction -= aim[2]
 	if Input.is_action_pressed("ui_down") or Input.is_key_pressed(KEY_S):
 		direction += aim[2]
