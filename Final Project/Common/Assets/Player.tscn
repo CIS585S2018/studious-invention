@@ -313,7 +313,7 @@ height = 2.0
 radial_segments = 64
 rings = 4
 
-[node name="player" type="KinematicBody" index="0"]
+[node name="player" type="KinematicBody"]
 
 transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0 )
 input_ray_pickable = true
