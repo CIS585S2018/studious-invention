@@ -4,4 +4,12 @@
 
 [node name="Scene Root" index="0" instance=ExtResource( 1 )]
 
+[node name="Point" parent="." index="1"]
+
+visible = false
+
+[node name="Sun" parent="." index="2"]
+
+visible = false
+
 

@@ -582,7 +582,6 @@ script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="yaw/CameraBase" index="0"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0 )
 keep_aspect = 1
 cull_mask = 1048575
