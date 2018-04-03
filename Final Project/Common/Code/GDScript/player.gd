@@ -53,13 +53,13 @@ func _physics_process(delta):
 	#else:
 	#	gravity = -30
 	
-	var gravity_vec = 10 * delta * translation.normalized();		
+	var gravity_vec = translation;		
 	
-	velocity.x = direction.x
-	velocity.z = direction.z
+	velocity.x = direction.x;
+	velocity.z = direction.z;
 	velocity += gravity_vec;
 	
-	velocity = move_and_slide(velocity, gravity_vec*(-1));
+	velocity = move_and_slide(velocity,gravity_vec*(-1));
 	#set_rotation(gravity_vec);
 		
 	#jump
@@ -68,7 +68,7 @@ func _physics_process(delta):
 	if Input.is_key_pressed(KEY_H):
 		velocity -= gravity_vec*10;
 		
-	print(gravity_vec);
+	print(velocity);
 # cast a short ray and call the use() method if the object we hit is usable
 func use_thing():
 	var ray = self.get_node("yaw/CameraBase/Camera/ray")

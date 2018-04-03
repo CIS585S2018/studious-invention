@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/Hexasphere/Assets/Pentagon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/ClimbingTree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Common/Assets/Pentagon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://pentagon_levels/Tree/ClimbingTree.tscn" type="PackedScene" id=2]
 
 [node name="TreePentagon" type="Spatial" index="0"]
 

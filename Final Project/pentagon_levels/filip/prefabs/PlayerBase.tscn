@@ -15,7 +15,7 @@ height = 1.0
 
 length = 1.71894
 
-[node name="player" type="RigidBody" index="0"]
+[node name="player" type="RigidBody"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
