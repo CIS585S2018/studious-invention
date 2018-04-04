@@ -1,8 +1,8 @@
 extends KinematicBody
 #most of the camera control and movement is taken from a tutorial I found online
-var speed = 250
+var speed = 20;
 var direction = Vector3()
-var gravity = -9.8
+var gravity = 9.8
 var velocity = Vector3()
 var m = SpatialMaterial.new();
 
@@ -54,9 +54,9 @@ func _physics_process(delta):
 	#else:
 	#	gravity = -30
 	
-	var gravity_vec = get_global_transform().origin.normalized() * delta * 10;		
+	var gravity_vec = get_global_transform().origin.normalized() * delta * gravity;		
 	
-	var begin = get_global_transform().origin;
+	"""var begin = get_global_transform().origin;
 	var end = get_global_transform().origin;
 	var mid = get_global_transform().origin;
 	var begin2 = get_global_transform().origin;
@@ -66,7 +66,7 @@ func _physics_process(delta):
 	end2.z += 0.2;
 	begin2.z -= 0.2;
 	
-	"""var im = get_node("../draw");
+	var im = get_node("../draw");
 	im.set_material_override(m);
 	im.clear()
 	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
@@ -86,14 +86,15 @@ func _physics_process(delta):
 	
 	velocity += gravity_vec;
 	
-	velocity = move_and_slide(velocity,gravity_vec*(-1));
+	velocity = move_and_slide(velocity,gravity_vec*(-50));
 	#set_rotation(gravity_vec);
-		
+	
+	#	
 	#jump
-	if is_on_floor() and Input.is_key_pressed(KEY_SPACE):
-		velocity -= gravity_vec*10;
-	if is_on_floor() and  Input.is_key_pressed(KEY_H):
-		velocity -= gravity_vec*20;
+	if (is_on_floor() and Input.is_key_pressed(KEY_SPACE)):
+		velocity -= gravity_vec*100;
+	if (is_on_floor() and  Input.is_key_pressed(KEY_H)):
+		velocity -= gravity_vec*200;
 	
 	if is_on_floor():
 		print("onfloor");
