@@ -4,6 +4,7 @@ var speed = 250
 var direction = Vector3()
 var gravity = -9.8
 var velocity = Vector3()
+var m = SpatialMaterial.new();
 
 #camera control
 var camera
@@ -53,22 +54,50 @@ func _physics_process(delta):
 	#else:
 	#	gravity = -30
 	
-	var gravity_vec = translation;		
+	var gravity_vec = get_global_transform().origin.normalized() * delta * 10;		
 	
-	velocity.x = direction.x;
-	velocity.z = direction.z;
+	var begin = get_global_transform().origin;
+	var end = get_global_transform().origin;
+	var mid = get_global_transform().origin;
+	var begin2 = get_global_transform().origin;
+	var end2 = get_global_transform().origin;
+	end.x += 0.2;
+	begin.x -= 0.2;
+	end2.z += 0.2;
+	begin2.z -= 0.2;
+	
+	"""var im = get_node("../draw");
+	im.set_material_override(m);
+	im.clear()
+	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
+	im.add_vertex(begin)
+	im.add_vertex(end)
+	im.add_vertex(begin2)
+	im.add_vertex(end2)
+	im.end()
+	
+	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
+	im.add_vertex(Vector3())
+	im.add_vertex(mid)
+	im.end()"""
+	if is_on_floor():
+		velocity.x += direction.x;
+		velocity.z += direction.z;
+	
 	velocity += gravity_vec;
 	
 	velocity = move_and_slide(velocity,gravity_vec*(-1));
 	#set_rotation(gravity_vec);
 		
 	#jump
-	if Input.is_key_pressed(KEY_SPACE):
-		velocity -= gravity_vec*5;
-	if Input.is_key_pressed(KEY_H):
+	if is_on_floor() and Input.is_key_pressed(KEY_SPACE):
 		velocity -= gravity_vec*10;
-		
-	print(velocity);
+	if is_on_floor() and  Input.is_key_pressed(KEY_H):
+		velocity -= gravity_vec*20;
+	
+	if is_on_floor():
+		print("onfloor");
+		#print(get_global_transform().origin);
 # cast a short ray and call the use() method if the object we hit is usable
 func use_thing():
 	var ray = self.get_node("yaw/CameraBase/Camera/ray")
