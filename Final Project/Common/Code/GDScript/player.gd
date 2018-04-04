@@ -88,17 +88,26 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity,gravity_vec*(-50));
 	#set_rotation(gravity_vec);
-	
-	#	
+		
 	#jump
 	if (is_on_floor() and Input.is_key_pressed(KEY_SPACE)):
 		velocity -= gravity_vec*100;
 	if (is_on_floor() and  Input.is_key_pressed(KEY_H)):
 		velocity -= gravity_vec*200;
+		
+	rotate_model(delta);
 	
-	if is_on_floor():
-		print("onfloor");
-		#print(get_global_transform().origin);
+#	if is_on_floor():
+#		print("onfloor");
+#		print(get_global_transform().origin);
+func rotate_model(delta):
+	var gravity_vec = get_global_transform().origin.normalized() * delta * gravity;
+	var up = -gravity_vec.normalized();
+	look_at(up.slide(Vector3(1,0,0)), up); 
+	# at this point, the player's body is always facing the floor belly-first.
+	# just need to turn the model 90 more degrees to fix the rotation.
+#	set_rotation(Vector3(0, deg2rad(90), 0));
+
 # cast a short ray and call the use() method if the object we hit is usable
 func use_thing():
 	var ray = self.get_node("yaw/CameraBase/Camera/ray")
