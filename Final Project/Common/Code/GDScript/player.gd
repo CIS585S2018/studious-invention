@@ -2,7 +2,7 @@ extends KinematicBody
 #most of the camera control and movement is taken from a tutorial I found online
 var speed = 20;
 var direction = Vector3()
-var gravity = 9.8
+var gravity = 50;
 var velocity = Vector3()
 var m = SpatialMaterial.new();
 
@@ -91,19 +91,15 @@ func _physics_process(delta):
 		
 	#jump
 	if (is_on_floor() and Input.is_key_pressed(KEY_SPACE)):
-		velocity -= gravity_vec*100;
+		velocity -= gravity_vec*10;
 	if (is_on_floor() and  Input.is_key_pressed(KEY_H)):
 		velocity -= gravity_vec*200;
-		
-	rotate_model(delta);
 	
-#	if is_on_floor():
-#		print("onfloor");
-#		print(get_global_transform().origin);
-func rotate_model(delta):
-	var gravity_vec = get_global_transform().origin.normalized() * delta * gravity;
-	var up = -gravity_vec.normalized();
-	look_at(up.slide(Vector3(1,0,0)), up); 
+	#var perp = Vector3(gravity_vec.y,-gravity_vec.x,0);	
+	
+	look_at(Vector3(0,0,0),-gravity_vec.normalized()); 
+	rotate_object_local(Vector3(1,0,0),-PI/2);
+	
 	# at this point, the player's body is always facing the floor belly-first.
 	# just need to turn the model 90 more degrees to fix the rotation.
 #	set_rotation(Vector3(0, deg2rad(90), 0));
