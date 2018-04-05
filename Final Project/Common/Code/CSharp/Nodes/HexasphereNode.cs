@@ -23,7 +23,8 @@ public class HexasphereNode : Node
         //pentagons.Add((PackedScene)ResourceLoader.Load("res://Pentagon Levels/Filip/pentagon_level.tscn"));
 		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Pentagon Levels/Filip/pentagon_level.tscn"));
 		
-		pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
+		//pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
+		pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/simpler_hexa_maze.tscn"));
 		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
 		
 		//pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/Tree/TreePentagon.tscn"));
