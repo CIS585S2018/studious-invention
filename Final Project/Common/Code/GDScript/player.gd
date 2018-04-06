@@ -1,7 +1,7 @@
 extends RigidBody
 
 var moveSpeed = 200;
-var jumpForce = 400;
+var jumpForce = 1000;
 var gravity = 100;
 var m_justJumping = false;
 var gravityCompounded = Vector3();
@@ -34,8 +34,6 @@ func _integrate_forces(state):
 	
 	var gravity_vec =  get_global_transform().origin.normalized() * gravity;
 	PhysicsServer.area_set_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR , gravity_vec);
-	
-	angular_velocity = Vector3(0,0,0);
 	
 	#finalMoveVector is the vector that combines all forces to one
 	var mMoveDir = calculate_move_dir(); 
