@@ -13,10 +13,9 @@ var third_person = false
 #var yaw = 0
 #var pitch = 0
 var flashlight
-
 var pos_label
+var song=0
 
-#func _process(delta):
 
 func _ready():
 	set_process_input(true)
@@ -25,6 +24,7 @@ func _ready():
 	self.set_meta("name","player")
 	flashlight = get_node("yaw/CameraBase/Camera/SpotLight")
 	flashlight.visible = false
+	#$AudioStreamPlayer.play()
 
 func _enter_scene():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -167,3 +167,13 @@ func _input(ie):
 	#	pitch = max(min(pitch - ie.relative.y * view_sensitivity, 90), -90)
 	#	set_rotation(Vector3(0, deg2rad(yaw), 0))
 	#	camera.set_rotation(Vector3(deg2rad(pitch), 0, 0))
+
+func _on_AudioTimer_timeout():
+	if song == 0:
+		#$AudioStreamPlayer.stream="res://Common/Assets/audio/Hoot.ogg"
+		pass
+	elif song == 1:
+		#$AudioStreamPlayer.stream="res://Common/Assets/audio/Atmosphere.ogg"
+		pass
+	else:
+		pass

@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Common/Code/GDScript/player.gd" type="Script" id=1]
 [ext_resource path="res://Common/Code/GDScript/CameraBase.gd" type="Script" id=2]
 [ext_resource path="res://Common/Assets/hand/hands.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Common/Code/GDScript/hands.gd" type="Script" id=4]
 [ext_resource path="res://Common/Assets/hand_particles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Common/Assets/audio/Hoot.ogg" type="AudioStream" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -195,7 +196,7 @@ height = 2.0
 radial_segments = 64
 rings = 4
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=8]
 
 render_priority = 0
 flags_transparent = false
@@ -247,7 +248,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=9]
 
 render_priority = 0
 flags_transparent = false
@@ -299,21 +300,21 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="SphereMesh" id=9]
+[sub_resource type="SphereMesh" id=10]
 
-material = SubResource( 8 )
+material = SubResource( 9 )
 radius = 1.0
 height = 2.0
 radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[sub_resource type="CapsuleShape" id=13]
+[sub_resource type="CapsuleShape" id=11]
 
 radius = 1.0
 height = 1.0
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=12]
 
 render_priority = 0
 flags_transparent = false
@@ -365,9 +366,9 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="CylinderMesh" id=12]
+[sub_resource type="CylinderMesh" id=13]
 
-material = SubResource( 11 )
+material = SubResource( 12 )
 top_radius = 1.0
 bottom_radius = 1.0
 height = 2.0
@@ -550,7 +551,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 7 )
 skeleton = NodePath("..")
-material/0 = SubResource( 14 )
+material/0 = SubResource( 8 )
 _sections_unfolded = [ "material" ]
 
 [node name="head" type="MeshInstance" parent="." index="3"]
@@ -566,7 +567,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 9 )
+mesh = SubResource( 10 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform" ]
@@ -587,7 +588,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 transform = Transform( 0.199472, 0, 0, 0, 0.516797, 0, 0, 0, 0.20566, 0, 0.724193, 0 )
 visible = false
-shape = SubResource( 13 )
+shape = SubResource( 11 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -605,7 +606,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 12 )
+mesh = SubResource( 13 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform" ]
@@ -635,7 +636,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 12 )
+mesh = SubResource( 13 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform" ]
@@ -737,7 +738,6 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -757,7 +757,6 @@ margin_top = 23.0
 margin_right = 187.0
 margin_bottom = 105.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -771,5 +770,22 @@ esc to exit"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="AudioTimer" type="Timer" parent="." index="11"]
+
+process_mode = 1
+wait_time = 300.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="AudioTimer" to="." method="_on_AudioTimer_timeout"]
 
 
