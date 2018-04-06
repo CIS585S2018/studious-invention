@@ -6,7 +6,7 @@ var view_sensitivity = .3;
 
 onready var hands = get_node("hands");
 onready var camera = get_node("Camera");
-onready var player = get_node("../../../player");
+onready var player = get_node("../../player");
 onready var hands_sx = hands.translation.x;
 onready var hands_sy = hands.translation.y;
 onready var hands_sz = hands.translation.z;

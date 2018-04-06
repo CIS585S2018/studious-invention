@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Common/Assets/yaw.gd" type="Script" id=1]
+[ext_resource path="res://Common/Code/GDScript/CameraBase.gd" type="Script" id=2]
+[ext_resource path="res://Common/Assets/hand/hands.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Common/Code/GDScript/hands.gd" type="Script" id=4]
+[ext_resource path="res://Common/Assets/hand_particles.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CubeMesh" id=1]
+
+size = Vector3( 2, 2, 2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[node name="yaw" type="Spatial" index="0"]
+
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, -1.30313e-21, 8.74228e-08, 0, -1, 0, 0, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CameraBase" type="Spatial" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0 )
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="CameraBase" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 1000.0
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ray" type="RayCast" parent="CameraBase/Camera" index="0"]
+
+transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0.124999, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, -1, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="gun" type="RayCast" parent="CameraBase/Camera" index="1"]
+
+transform = Transform( 1, 1.81899e-12, -1.35525e-20, 0, -6.8616e-07, -2.95, 0, 15.6975, -1.28949e-07, 0, 0, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, -1, 0 )
+collision_mask = 1
+
+[node name="SpotLight" type="SpotLight" parent="CameraBase/Camera" index="2"]
+
+transform = Transform( 0.996195, 0, 0.0871558, 0, 1, 0, -0.0871558, 0, 0.996195, 0.0961542, -0.278846, 9.53674e-07 )
+layers = 1
+light_color = Color( 1, 0.897644, 0.496094, 1 )
+light_energy = 4.2
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 10.0
+spot_attenuation = 1.0
+spot_angle = 45.0
+spot_angle_attenuation = 1.0
+_sections_unfolded = [ "Editor", "Light", "Shadow", "Spot" ]
+
+[node name="hands" parent="CameraBase" index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 3.41958e-08, -0.122423, -0.391154 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="parts" parent="CameraBase/hands" index="4" instance=ExtResource( 5 )]
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="1"]
+
+transform = Transform( 0.100893, 0, -7.86025e-08, -1.02429e-28, 0.0840297, 1.19363e-21, -7.86025e-08, 0, 1, 8.61873e-08, 0.941911, -0.985868 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = null
+
+

@@ -104,7 +104,9 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Cylinder/StaticBody2" index="0"]
 
+transform = Transform( 1.2, 0, 0, 0, 52.6462, 0, 0, 0, 1.2, 0, -25.7912, 0 )
 shape = SubResource( 3 )
 disabled = false
+_sections_unfolded = [ "Transform" ]
 
 
