@@ -33,8 +33,9 @@ public class HexasphereNode : Node
 		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
 		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Scott/level.tscn"));
 		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Pavel/world1.tscn"));
-		//pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/Filip/pentagon_level.tscn"));
-		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/Tree/ClimbingTree.tscn"));
+		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Generic Square Maze/Generic Maze.tscn"));
+		//pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
+		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/Tree/TreePentagon.tscn"));
 		
         //pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jacob/Main Scene.tscn"));		
 		
@@ -221,7 +222,13 @@ public class HexasphereNode : Node
 		GD.Print(tileCenterPoint);
 
         //Create surface tool
-        var surfaceTool = MeshCreation.CreateSurfaceTool();
+		               var material = new SpatialMaterial();
+                //material.SetEmission(new Color(1.0f, 0.0f, 0.0f));
+                //material.SetEmissionEnergy(0.5f);
+                material.SetAlbedo(new Color(0.0f, 0.0f, 0.0f));
+                //material.SetMetallic(0.5f);
+                material.SetCullMode(SpatialMaterial.CullMode.Back);
+        var surfaceTool = MeshCreation.CreateSurfaceTool(material);
         //Make triangles for polygon
         for (var index = 0; index < points.Count; index++)
         {

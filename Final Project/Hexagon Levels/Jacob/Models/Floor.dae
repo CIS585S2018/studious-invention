@@ -5,13 +5,13 @@
 		<author>Anonymous</author>
 		<authoring_tool>Collada Exporter for Blender 2.6+, by Juan Linietsky (juan@codenix.com)</authoring_tool>
 	</contributor>
-	<created>2018-03-11T17:05:06Z</created>
-	<modified>2018-03-11T17:05:06Z</modified>
+	<created>2018-04-05T22:32:49Z</created>
+	<modified>2018-04-05T22:32:49Z</modified>
 	<unit meter="1.0" name="meter"/>
 	<up_axis>Z_UP</up_axis>
 </asset>
 <library_effects>
-	<effect id="id-fx-3" name="Material-fx">
+	<effect id="id-fx-2" name="Material-fx">
 		<profile_COMMON>
 			<technique sid="common">
 				<blinn>
@@ -49,49 +49,49 @@
 	</effect>
 </library_effects>
 <library_materials>
-	<material id="id-material-4" name="Material">
-		<instance_effect url="#id-fx-3"/>
+	<material id="id-material-3" name="Material">
+		<instance_effect url="#id-fx-2"/>
 	</material>
 </library_materials>
 <library_geometries>
-	<geometry id="id-mesh-5" name="Cube">
+	<geometry id="id-mesh-4" name="Cube">
 		<mesh>
-			<source id="id-mesh-5-positions">
-				<float_array id="id-mesh-5-positions-array" count="72"> 2.0 -0.20000000298023224 0.0 -2.0 -0.20000000298023224 0.0 -2.0 0.20000000298023224 0.0 2.0 0.20000000298023224 2.0 -2.0 0.20000000298023224 2.0 -2.0 -0.20000000298023224 2.0 2.0 -0.20000000298023224 2.0 -2.0 -0.20000000298023224 2.0 -2.0 -0.20000000298023224 0.0 -2.0 -0.20000000298023224 2.0 -2.0 0.20000000298023224 2.0 -2.0 0.20000000298023224 0.0 2.0 0.20000000298023224 0.0 -2.0 0.20000000298023224 0.0 -2.0 0.20000000298023224 2.0 2.0 0.20000000298023224 2.0 2.0 -0.20000000298023224 0.0 2.0 -0.20000000298023224 2.0 -2.0 -0.20000000298023224 0.0 2.0 0.20000000298023224 0.0 2.0 0.20000000298023224 2.0 2.0 -0.20000000298023224 2.0 2.0 0.20000000298023224 0.0 2.0 -0.20000000298023224 0.0</float_array>
+			<source id="id-mesh-4-positions">
+				<float_array id="id-mesh-4-positions-array" count="72"> 2.0 -0.20000000298023224 0.0 -2.0 -0.20000000298023224 0.0 -2.0 0.20000000298023224 0.0 2.0 0.20000000298023224 2.0 -2.0 0.20000000298023224 2.0 -2.0 -0.20000000298023224 2.0 2.0 -0.20000000298023224 2.0 -2.0 -0.20000000298023224 2.0 -2.0 -0.20000000298023224 0.0 -2.0 -0.20000000298023224 2.0 -2.0 0.20000000298023224 2.0 -2.0 0.20000000298023224 0.0 2.0 0.20000000298023224 0.0 -2.0 0.20000000298023224 0.0 -2.0 0.20000000298023224 2.0 2.0 0.20000000298023224 2.0 2.0 -0.20000000298023224 0.0 2.0 -0.20000000298023224 2.0 -2.0 -0.20000000298023224 0.0 2.0 0.20000000298023224 0.0 2.0 0.20000000298023224 2.0 2.0 -0.20000000298023224 2.0 2.0 0.20000000298023224 0.0 2.0 -0.20000000298023224 0.0</float_array>
 				<technique_common>
-				<accessor source="#id-mesh-5-positions-array" count="24" stride="3">
+				<accessor source="#id-mesh-4-positions-array" count="24" stride="3">
 					<param name="X" type="float"/>
 					<param name="Y" type="float"/>
 					<param name="Z" type="float"/>
 				</accessor>
 				</technique_common>
 			</source>
-			<source id="id-mesh-5-normals">
-				<float_array id="id-mesh-5-normals-array" count="72"> 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 -1.0 1.0 0.0 0.0</float_array>
+			<source id="id-mesh-4-normals">
+				<float_array id="id-mesh-4-normals-array" count="72"> 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 -1.0 1.0 0.0 0.0</float_array>
 				<technique_common>
-				<accessor source="#id-mesh-5-normals-array" count="24" stride="3">
+				<accessor source="#id-mesh-4-normals-array" count="24" stride="3">
 					<param name="X" type="float"/>
 					<param name="Y" type="float"/>
 					<param name="Z" type="float"/>
 				</accessor>
 				</technique_common>
 			</source>
-			<source id="id-mesh-5-texcoord-0">
-				<float_array id="id-mesh-5-texcoord-0-array" count="48"> -0.666871964931488 0.998347818851471 -0.6668722033500671 -2.3294456005096436 -0.3340911269187927 -2.3294453620910645 -0.33243125677108765 0.998347818851471 -0.33243149518966675 -2.3294456005096436 0.0003497004508972168 -2.3294453620910645 1.6675691604614258 0.9983530640602112 1.6675686836242676 -2.3294453620910645 3.331467866897583 -2.3294453620910645 0.0020096302032470703 1.3327927589416504 0.0020096302032470703 1.0000128746032715 1.6659088134765625 1.0000128746032715 0.0020101070404052734 0.9983530640602112 0.002009570598602295 -2.3294453620910645 1.6659088134765625 -2.3294453620910645 1.6659088134765625 0.9983530640602112 3.331467866897583 0.9983530640602112 0.00034809112548828125 0.9983482956886292 1.6659088134765625 1.3327927589416504 3.331467866897583 1.3327927589416504 1.6675686836242676 1.3327927589416504 1.6675686836242676 1.0000128746032715 -0.33409255743026733 0.9983482956886292 3.331467866897583 1.0000128746032715</float_array>
+			<source id="id-mesh-4-texcoord-0">
+				<float_array id="id-mesh-4-texcoord-0-array" count="48"> -0.5025016069412231 0.4975111484527588 -0.5025022029876709 -2.830282211303711 -0.16972088813781738 -2.830282211303711 -0.16806089878082275 0.4975111484527588 -0.1680614948272705 -2.830282211303711 0.164719820022583 -2.83028244972229 1.831939458847046 0.4975162744522095 1.831938624382019 -2.83028244972229 3.495837688446045 -2.830282688140869 0.16637980937957764 0.8319559097290039 0.16637980937957764 0.499176025390625 1.830278992652893 0.4991760849952698 0.16638028621673584 0.497516393661499 0.16637969017028809 -2.83028244972229 1.830278754234314 -2.83028244972229 1.8302791118621826 0.4975162744522095 3.495838165283203 0.4975161552429199 0.16471803188323975 0.497511625289917 1.830278992652893 0.8319557309150696 3.495838165283203 0.8319559097290039 1.8319388628005981 0.8319557309150696 1.8319388628005981 0.4991760849952698 -0.16972219944000244 0.497511625289917 3.495838165283203 0.499176025390625</float_array>
 				<technique_common>
-				<accessor source="#id-mesh-5-texcoord-0-array" count="24" stride="2">
+				<accessor source="#id-mesh-4-texcoord-0-array" count="24" stride="2">
 					<param name="S" type="float"/>
 					<param name="T" type="float"/>
 				</accessor>
 				</technique_common>
 			</source>
-			<vertices id="id-mesh-5-vertices">
-				<input semantic="POSITION" source="#id-mesh-5-positions"/>
+			<vertices id="id-mesh-4-vertices">
+				<input semantic="POSITION" source="#id-mesh-4-positions"/>
 			</vertices>
-			<polygons count="12" material="id-trimat-6">
-				<input semantic="VERTEX" source="#id-mesh-5-vertices" offset="0"/>
-				<input semantic="NORMAL" source="#id-mesh-5-normals" offset="0"/>
-				<input semantic="TEXCOORD" source="#id-mesh-5-texcoord-0" offset="0" set="0"/>
+			<polygons count="12" material="id-trimat-5">
+				<input semantic="VERTEX" source="#id-mesh-4-vertices" offset="0"/>
+				<input semantic="NORMAL" source="#id-mesh-4-normals" offset="0"/>
+				<input semantic="TEXCOORD" source="#id-mesh-4-texcoord-0" offset="0" set="0"/>
 				<p> 0 1 2 </p>
 				<p> 3 4 5 </p>
 				<p> 6 7 8 </p>
@@ -108,49 +108,17 @@
 		</mesh>
 	</geometry>
 </library_geometries>
-<library_cameras>
-	<camera id="id-camera-2" name="Camera">
-		<optics>
-			<technique_common>
-				<perspective>
-					<yfov>49.13434207760448</yfov>
-					<aspect_ratio>1.7777777777777777</aspect_ratio>
-					<znear>0.10000000149011612</znear>
-					<zfar>100.0</zfar>
-				</perspective>
-			</technique_common>
-		</optics>
-	</camera>
-</library_cameras>
-<library_lights>
-	<light id="id-light-7" name="Lamp">
-			<technique_common>
-				<point>
-					<color>  1.0 1.0 1.0 </color>
-					<linear_attenuation>0.06666670481366115</linear_attenuation>
-				</point>
-			</technique_common>
-	</light>
-</library_lights>
 <library_visual_scenes>
 	<visual_scene id="id-scene-1" name="scene">
-		<node id="Camera" name="Camera" type="NODE">
-			<matrix sid="transform"> 0.6859206557273865 -0.32401347160339355 0.6515582203865051 7.481131553649902 0.7276763319969177 0.305420845746994 -0.6141703724861145 -6.5076398849487305 0.0 0.8953956365585327 0.44527140259742737 5.34366512298584 0.0 0.0 0.0 1.0  </matrix>
-			<instance_camera url="#id-camera-2"/>
-		</node>
 		<node id="Cube" name="Cube" type="NODE">
 			<matrix sid="transform"> 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0  </matrix>
-			<instance_geometry url="#id-mesh-5">
+			<instance_geometry url="#id-mesh-4">
 				<bind_material>
 					<technique_common>
-						<instance_material symbol="id-trimat-6" target="#id-material-4"/>
+						<instance_material symbol="id-trimat-5" target="#id-material-3"/>
 					</technique_common>
 				</bind_material>
 			</instance_geometry>
-		</node>
-		<node id="Lamp" name="Lamp" type="NODE">
-			<matrix sid="transform"> -0.29086464643478394 -0.7711008191108704 0.5663931965827942 4.076245307922363 0.9551711678504944 -0.1998833566904068 0.21839119493961334 1.0054539442062378 -0.05518905818462372 0.6045247316360474 0.7946722507476807 5.903861999511719 0.0 0.0 0.0 1.0  </matrix>
-			<instance_light url="#id-light-7"/>
 		</node>
 	</visual_scene>
 </library_visual_scenes>

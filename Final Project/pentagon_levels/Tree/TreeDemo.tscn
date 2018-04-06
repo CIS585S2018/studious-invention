@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://pentagon_levels/Tree/TreePentagon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://pentagon_levels/Tree/old_player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://pentagon_levels/Tree/old_player.gd" type="Script" id=3]
+[ext_resource path="res://Hexagon Levels/Pavel/Assets/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hexagon Levels/Pavel/Code/player.gd" type="Script" id=3]
 
 [sub_resource type="Environment" id=1]
 
@@ -83,7 +83,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light" ]
 
-[node name="TreeDemo" type="Spatial" index="0"]
+[node name="TreeDemo" type="Spatial"]
 
 [node name="TreePentagon" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -93,9 +93,31 @@ environment = SubResource( 1 )
 
 [node name="player" parent="." index="1" instance=ExtResource( 2 )]
 
-transform = Transform( 1.12583, 0, 0.65, 0, 1.3, 0, -0.65, 0, 1.12583, -7.03263, 0.547093, 0.984015 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.80107, 2.99274, 0 )
 script = ExtResource( 3 )
+
+[node name="yaw" type="Spatial" parent="player" index="7"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.128848, 0 )
+
+[node name="Camera" type="Camera" parent="player/yaw" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12557, 0 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
 
 
 [editable path="TreePentagon"]
 [editable path="TreePentagon/Pentagon"]
+[editable path="player"]

@@ -1,0 +1,212 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Parts/Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Parts/Large Wall w Door 1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Room Layouts/Small Room.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Parts/Large Wall w Door 2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Room Layouts/Room Layout Right 1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Room Layouts/Room Layout Left 1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Room Layouts/Room Layout Right 2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Room Layouts/Room Layout Left 2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Room Layouts/Room Layout Right 3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hexagon Levels/Pavel/Assets/player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hexagon Levels/Pavel/Code/player.gd" type="Script" id=11]
+
+[node name="Floating Maze" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
+
+transform = Transform( 0.691195, -0.10142, 0.715516, -0.451975, 0.711893, 0.537519, -0.563886, -0.694926, 0.446218, 18.0742, 11.1973, 9.06734 )
+layers = 1
+light_color = Color( 0.976563, 0.874579, 0.75531, 1 )
+light_energy = 0.7
+light_indirect_energy = 1.01
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light" ]
+
+[node name="Base" parent="." index="1" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Outer Walls" type="Spatial" parent="." index="2"]
+
+editor/display_folded = true
+
+[node name="Large Wall w Door 1" parent="Outer Walls" index="0" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18, 0, 10.4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Large Wall w Door 2" parent="Outer Walls" index="1" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18, 0, 10.4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Large Wall w Door 3" parent="Outer Walls" index="2" instance=ExtResource( 2 )]
+
+transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 18, 0, -10.4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Large Wall w Door 4" parent="Outer Walls" index="3" instance=ExtResource( 2 )]
+
+transform = Transform( -0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 18, 0, 10.4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Large Wall w Door 5" parent="Outer Walls" index="4" instance=ExtResource( 2 )]
+
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -18, 0, 10.4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Large Wall w Door 6" parent="Outer Walls" index="5" instance=ExtResource( 2 )]
+
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -18, 0, -10.4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Outer Rooms" type="Spatial" parent="." index="3"]
+
+editor/display_folded = true
+
+[node name="Room N" parent="Outer Rooms" index="0" instance=ExtResource( 3 )]
+
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room NE" parent="Outer Rooms" index="1" instance=ExtResource( 3 )]
+
+transform = Transform( -0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866026, 9, 0, 15.59 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room SE" parent="Outer Rooms" index="2" instance=ExtResource( 3 )]
+
+transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, -9, 0, 15.59 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room S" parent="Outer Rooms" index="3" instance=ExtResource( 3 )]
+
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room SW" parent="Outer Rooms" index="4" instance=ExtResource( 3 )]
+
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -9, 0, -15.59 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room SW2" parent="Outer Rooms" index="5" instance=ExtResource( 3 )]
+
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 9, 0, -15.59 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inner Walls" type="Spatial" parent="." index="4"]
+
+editor/display_folded = true
+
+[node name="Large Wall NW" parent="Inner Walls" index="0" instance=ExtResource( 2 )]
+
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Large Wall E" parent="Inner Walls" index="1" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Large Wall SW" parent="Inner Walls" index="2" instance=ExtResource( 4 )]
+
+transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inner Rooms" type="Spatial" parent="." index="5"]
+
+editor/display_folded = true
+
+[node name="NE Room" type="Spatial" parent="Inner Rooms" index="0"]
+
+[node name="Room Layout Right 1" parent="Inner Rooms/NE Room" index="0" instance=ExtResource( 5 )]
+
+[node name="Room Layout Left 1" parent="Inner Rooms/NE Room" index="1" instance=ExtResource( 6 )]
+
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, -2, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room Layout Right 2" parent="Inner Rooms/NE Room" index="2" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="W Room" type="Spatial" parent="Inner Rooms" index="1"]
+
+transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room Layout Right 1" parent="Inner Rooms/W Room" index="0" instance=ExtResource( 5 )]
+
+[node name="Room Layout Left 1" parent="Inner Rooms/W Room" index="1" instance=ExtResource( 6 )]
+
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, -2, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room Layout Right 2" parent="Inner Rooms/W Room" index="2" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="SE Room" type="Spatial" parent="Inner Rooms" index="2"]
+
+transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room Layout Left 2" parent="Inner Rooms/SE Room" index="0" instance=ExtResource( 8 )]
+
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Room Layout Right 3" parent="Inner Rooms/SE Room" index="1" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="player" parent="." index="6" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89344, -0.186407, 3.67096 )
+script = ExtResource( 11 )
+
+[node name="yaw" type="Spatial" parent="player" index="7"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89344, 0.128848, -1.69617 )
+
+[node name="Camera" type="Camera" parent="player/yaw" index="0"]
+
+transform = Transform( 0.999875, 0, -0.0157923, 0, 1, 0, 0.0157923, 0, 0.999875, 2.00123, 1.09767, 1.47088 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+
+

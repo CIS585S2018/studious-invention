@@ -18,7 +18,7 @@ func _ready():
 	# Initialization here
 	var scene_root = self.get_node("..")
 	var sphere_root = scene_root.get_node("..")
-	player = sphere_root.get_node("player")
+	player = get_node("../player")
 	self.get_node("Area").set_meta("type","killable")
 	self.get_node("Area").set_meta("name","follower")
 	pass
@@ -26,6 +26,8 @@ func _ready():
 # start chasing after the player when they come a little closer
 func start_moving():
 	if moving:
+		return
+	if player == null:
 		return
 	var player_pos = player.translation
 	var my_pos = self.translation

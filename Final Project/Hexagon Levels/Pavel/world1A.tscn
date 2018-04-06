@@ -14,8 +14,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, 0.332886, 0.942967, 0, -0.942967, 0.332886, 0, 14.9334, 0 )
-visible = false
+transform = Transform( -0.828802, 0.186264, 0.527629, -0.559542, -0.275897, -0.781533, 0, -0.942967, 0.332886, 1.59694, 15.623, 22.9268 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 7.0

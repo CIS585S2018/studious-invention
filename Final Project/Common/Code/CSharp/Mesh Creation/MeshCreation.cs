@@ -15,7 +15,7 @@ namespace FinalProject.MeshUtilities
                 material = new SpatialMaterial();
                 //material.SetEmission(new Color(1.0f, 0.0f, 0.0f));
                 //material.SetEmissionEnergy(0.5f);
-                material.SetAlbedo(new Color(0.0f, 0.0f, 0.0f));
+                material.SetAlbedo(new Color((124.0f / 255.0f), 0.0f, 249.0f / 255f));
                 //material.SetMetallic(0.5f);
                 material.SetCullMode(SpatialMaterial.CullMode.Back);
             }

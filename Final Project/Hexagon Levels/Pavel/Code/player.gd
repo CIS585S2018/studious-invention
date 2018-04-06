@@ -76,6 +76,17 @@ func rotate_camera():
 		camera.translate(Vector3(0,-0.75,-1.5))
 	pass
 		
+		# cast a short ray and call the use() method if the object we hit is usable
+func use_thing():
+	var ray = self.get_node("yaw/Camera/ray")
+	if ray.is_colliding():
+		var object = ray.get_collider()
+		var type = object.get_meta("type")
+		if type == "usable":
+#			print("attempting to use ",object," of type ",type," and name ",object.get_meta("name"))
+			object.get_node("..").use(self)
+	pass
+		
 func _input(ie):
 	if ie is InputEventKey and Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()

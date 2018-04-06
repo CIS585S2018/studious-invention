@@ -1,13 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Hexagon Levels/Jacob/Assets/Room Layouts/Room Walls.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Hexagon Levels/Jacob/Assets/Room Parts/Floor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Hexagon Levels/Jacob/Assets/Room Parts/Floor Rot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Parts/Floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hexagon Levels/Jacob/Assets/Parts/FloorRot.tscn" type="PackedScene" id=3]
 
-
-
-
-[node name="Room Layout Right 2" type="Spatial"]
+[node name="Room Layout Right 2" type="Spatial" index="0"]
 
 [node name="Room Walls" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -50,41 +47,33 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -3 )
 [node name="Floor Rot 1" parent="Floors" index="8" instance=ExtResource( 3 )]
 
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 10 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="Floor Rot 2" parent="Floors" index="9" instance=ExtResource( 3 )]
 
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 4 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="Floor Rot 3" parent="Floors" index="10" instance=ExtResource( 3 )]
 
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, 4 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="Floor Rot 4" parent="Floors" index="11" instance=ExtResource( 3 )]
 
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 0, 2 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="Floor Rot 5" parent="Floors" index="12" instance=ExtResource( 3 )]
 
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 0, 6 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="Floor Rot 6" parent="Floors" index="13" instance=ExtResource( 3 )]
 
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 0, -2 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="Floor Rot 7" parent="Floors" index="14" instance=ExtResource( 3 )]
 
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, -2 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="Floor Rot 8" parent="Floors" index="15" instance=ExtResource( 3 )]
 
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, 10 )
-_sections_unfolded = [ "Transform" ]
 
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://Common/Code/GDScript/player.gd" type="Script" id=1]
 [ext_resource path="res://Common/Assets/audio/Hoot.ogg" type="AudioStream" id=2]
 
-[sub_resource type="SphereShape" id=14]
+[sub_resource type="SphereShape" id=1]
 
 radius = 1.0
 
@@ -41,7 +41,7 @@ _sections_unfolded = [ "Angular", "Transform" ]
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
 transform = Transform( 0.5, 0, 2.73286e-15, 0, 0.5, 3.25782e-22, -2.73286e-15, 0, 0.5, 0, 1.2, 0 )
-shape = SubResource( 14 )
+shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
