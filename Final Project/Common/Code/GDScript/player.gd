@@ -35,6 +35,7 @@ func _exit_scene():
 func _physics_process(delta):
 	var aim = get_node("yaw").get_global_transform().basis
 	
+	
 	direction = Vector3()
 	if Input.is_action_pressed("ui_left") or Input.is_key_pressed(KEY_A):
 		direction -= Vector3(1,0,0);
@@ -49,61 +50,74 @@ func _physics_process(delta):
 	direction = direction.normalized();
 	direction = direction * speed * delta
 	
-	#if velocity.y > 0:
-	#	gravity = -20
-	#else:
-	#	gravity = -30
 	
 	var gravity_vec = get_global_transform().origin.normalized() * delta * gravity;		
 	
-	"""var begin = get_global_transform().origin;
-	var end = get_global_transform().origin;
-	var mid = get_global_transform().origin;
-	var begin2 = get_global_transform().origin;
-	var end2 = get_global_transform().origin;
-	end.x += 0.2;
-	begin.x -= 0.2;
-	end2.z += 0.2;
-	begin2.z -= 0.2;
-	
-	var im = get_node("../draw");
-	im.set_material_override(m);
-	im.clear()
-	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
-	im.add_vertex(begin)
-	im.add_vertex(end)
-	im.add_vertex(begin2)
-	im.add_vertex(end2)
-	im.end()
-	
-	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
-	im.add_vertex(Vector3())
-	im.add_vertex(mid)
-	im.end()"""
 	if is_on_floor():
 		velocity.x += direction.x;
 		velocity.z += direction.z;
 	
 	velocity += gravity_vec;
 	
-	velocity = move_and_slide(velocity,gravity_vec*(-50));
-	#set_rotation(gravity_vec);
+	rotate_model(delta);
+	
+	velocity = move_and_slide(velocity,-gravity_vec);
 		
 	#jump
 	if (is_on_floor() and Input.is_key_pressed(KEY_SPACE)):
-		velocity -= gravity_vec*100;
+		velocity += -gravity_vec*100;
 	if (is_on_floor() and  Input.is_key_pressed(KEY_H)):
-		velocity -= gravity_vec*200;
+		velocity += -gravity_vec*200;
 		
-	rotate_model(delta);
 	
-#	if is_on_floor():
-#		print("onfloor");
-#		print(get_global_transform().origin);
 func rotate_model(delta):
-	var gravity_vec = get_global_transform().origin.normalized() * delta * gravity;
-	var up = -gravity_vec.normalized();
-	look_at(up.slide(Vector3(1,0,0)), up); 
+	var t = get_transform()
+	var rotTransform = t.looking_at(Vector3(0,0,0),Vector3(0,1,0))
+	var thisRotation = Quat(t.basis).slerp(rotTransform.basis,1)
+	"""
+	value += delta
+	if value>1:
+		alue = 1
+		"""
+
+	set_transform(Transform(thisRotation,t.origin))
+	
+	#var position = Vector3(10, 0, 0)#get_global_transform().origin;
+	"""
+	var target = Vector3()
+	var pos = get_global_transform().origin
+	var up = Vector3(0, 1, 0)
+	
+	var delta = pos - target
+	
+	pos = target + delta
+	
+	look_at_from_position(pos, target, up)
+	
+	# Turn a little up or down
+	var t = get_transform()
+	t.basis = Basis(t.basis[0], deg2rad(0.0))*t.basis
+	set_transform(t)
+	global_rotate(Vector3(0, 0, 1), -deg2rad(90.0))
+	"""
+	#var point_direction = -position.normalized()
+	#var quat = Quat(-normalized_position.x, -normalized_position.y, -normalized_position.z, 0)
+	#var bVec = Vector3(
+	#normalized_position.z, 
+	#normalized_position.x, 
+	#normalized_position.y);
+	#transform = Transform(Basis(Quat(-point_direction.x, -point_direction.y, -point_direction.z, 0)), position)
+	#transform = Transform()
+	#look_at_from_position(position, Vector3(), get_global_transform().basis.y)
+	#rotate_y(PI)
+	#rotate_z(-PI/2)
+	#transform = transform.xform(Basis(position));
+	#transform = transform.rotated(Quat(-normalized_position.x, -normalized_position.y, -normalized_position.z, 0), 0)
+	#transform = transform.looking_at(Vector3(), Vector3(0, 0, 0));
+	
+	#var gravity_vec = get_global_transform().origin.normalized() * delta * gravity;
+	#var up = -gravity_vec.normalized();
+	#look_at(-get_global_transform().origin, Vector3(0,0,-1)); 
 	# at this point, the player's body is always facing the floor belly-first.
 	# just need to turn the model 90 more degrees to fix the rotation.
 #	set_rotation(Vector3(0, deg2rad(90), 0));

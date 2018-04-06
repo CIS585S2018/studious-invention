@@ -321,7 +321,7 @@ height = 2.0
 radial_segments = 64
 rings = 4
 
-[node name="player" type="KinematicBody"]
+[node name="player" type="KinematicBody" index="0"]
 
 transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0 )
 input_ray_pickable = true
@@ -336,12 +336,12 @@ axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Axis Lock", "Collision", "Transform", "collision" ]
 
 [node name="leg1" type="MeshInstance" parent="." index="0"]
 
 editor/display_folded = true
-transform = Transform( 0.064, 0, 0, 0, -9.09197e-09, -0.208, 0, 0.064, -2.79753e-09, -0.1, 0.5, 0 )
+transform = Transform( 0.064, 0, 0, 0, 0.064, 6.29444e-09, 0, 6.29444e-09, 0.208, -0.1, 0.0156578, -0.486218 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -356,18 +356,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform" ]
 
-[node name="StaticBody" type="StaticBody" parent="leg1" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="MeshInstance" type="MeshInstance" parent="leg1" index="1"]
+[node name="MeshInstance" type="MeshInstance" parent="leg1" index="0"]
 
 transform = Transform( 0.81763, 0, 0, 0, 1.48839, -5.82063e-08, 0, -5.82063e-08, 0.156783, 0, 0.584283, 1.32375 )
 layers = 1
@@ -383,21 +372,10 @@ mesh = SubResource( 4 )
 skeleton = NodePath("..")
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="leg1/MeshInstance" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
 [node name="leg2" type="MeshInstance" parent="." index="1"]
 
 editor/display_folded = true
-transform = Transform( 0.064, 0, 0, 0, -9.09197e-09, -0.208, 0, 0.064, -2.79753e-09, 0.1, 0.5, 0 )
+transform = Transform( 0.064, 0, 0, 0, 0.064, 6.29444e-09, 0, 6.29444e-09, 0.208, 0.1, 0.0156578, -0.486218 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -452,7 +430,9 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="body" type="MeshInstance" parent="." index="2"]
 
-transform = Transform( 0.151796, 0, 0, 0, 0.21, 0, 0, 0, 0.1, 0, 0.9, 0 )
+editor/display_folded = true
+transform = Transform( 0.151796, 0, 0, 0, -9.17939e-09, 0.1, 0, -0.21, -4.37114e-09, 0, 0.0156578, -0.886218 )
+visible = false
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -465,7 +445,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 6 )
 skeleton = NodePath("..")
 material/0 = null
-_sections_unfolded = [ "Transform", "material" ]
+_sections_unfolded = [ "Transform", "Visibility", "material" ]
 
 [node name="StaticBody" type="StaticBody" parent="body" index="0"]
 
@@ -497,7 +477,7 @@ material/0 = null
 
 [node name="head" type="MeshInstance" parent="." index="3"]
 
-transform = Transform( 0.1, 0, 1.86265e-08, 0, 0.105718, 0, -1.86265e-08, 0, 0.1, 0, 1.18456, 0 )
+transform = Transform( 0.1, 0, 1.86265e-08, -1.86265e-08, -4.62108e-09, 0.1, 8.1419e-16, -0.105718, -4.37114e-09, 0, 0.0156578, -1.17078 )
 visible = false
 layers = 1
 material_override = null
@@ -513,28 +493,16 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform" ]
 
-[node name="StaticBody" type="StaticBody" parent="head" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
 [node name="CollisionShape" type="CollisionShape" parent="." index="4"]
 
-transform = Transform( 0.199472, 0, 0, 0, 0.516797, 0, 0, 0, 0.20566, 0, 0.724193, 0 )
+transform = Transform( 0.199472, 0, 0, 0, -2.25899e-08, 0.20566, 0, -0.516797, -8.98968e-09, 0, 0.0156578, -0.710411 )
 shape = SubResource( 10 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="arm1" type="MeshInstance" parent="." index="5"]
 
-editor/display_folded = true
-transform = Transform( 0.0369183, -0.0149673, 0, 0.00322993, 0.171077, 0, 0, 0, 0.0325317, 0.19, 0.92, 0 )
+transform = Transform( 0.0369183, -0.0149673, 0, -1.41185e-10, -7.47801e-09, 0.0325317, -0.00322993, -0.171077, -1.42201e-09, 0.19, 0.0156578, -0.906218 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -548,22 +516,10 @@ mesh = SubResource( 12 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform" ]
-
-[node name="StaticBody" type="StaticBody" parent="arm1" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="arm2" type="MeshInstance" parent="." index="6"]
 
-editor/display_folded = true
-transform = Transform( 0.0369183, -0.0149673, 0, -0.00322993, -0.171077, 2.84401e-09, -2.8237e-10, -1.4956e-08, -0.0325317, -0.19, 0.92, 0 )
+transform = Transform( 0.0369183, -0.0149673, 0, -1.41185e-10, -7.47799e-09, -0.0325317, 0.00322993, 0.171077, -1.422e-09, -0.19, 0.0156578, -0.906218 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -578,20 +534,9 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform" ]
 
-[node name="StaticBody" type="StaticBody" parent="arm2" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
 [node name="yaw" type="Spatial" parent="." index="7"]
 
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 8.74228e-08, -4.37114e-08, -1, -3.82137e-15, -1, 4.37114e-08, 0, 0.0156578, 0.0137816 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CameraBase" type="Spatial" parent="yaw" index="0"]
@@ -601,7 +546,7 @@ script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="yaw/CameraBase" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0 )
+transform = Transform( 1, 4.23516e-22, -1.67038e-22, 4.23516e-22, 1, 0, -1.67037e-22, 0, 1, 0, -1.78814e-07, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -659,6 +604,7 @@ _sections_unfolded = [ "Editor", "Light", "Shadow", "Spot" ]
 [node name="hands" parent="yaw/CameraBase" index="1" instance=ExtResource( 3 )]
 
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 3.41958e-08, -0.122423, -0.391154 )
+visible = false
 script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
