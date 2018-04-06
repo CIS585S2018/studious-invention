@@ -28,9 +28,12 @@ func _process(delta):
 	
 		velocity = move_and_slide(velocity, Vector3(0, 1, 0))
 		
-		var atpos = path[path.size()/2]
-		look_at(atpos, Vector3(0,1,0))
-		rotate(Vector3(0,1,0), deg2rad(180))
+		var atpos
+		if path.size() > 3 && path[3] != null: 
+			atpos = path[3]
+			look_at(atpos, Vector3(0,1,0))
+			rotate(Vector3(0,1,0), deg2rad(180))
+		
 	pass
 
 func _ready():

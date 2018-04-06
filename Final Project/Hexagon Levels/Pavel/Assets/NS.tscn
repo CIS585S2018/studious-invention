@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Hexagon Levels/Pavel/Materials/Nightshade_MAT.material" type="Material" id=1]
 [ext_resource path="res://Hexagon Levels/Pavel/Assets/walkinplace.tscn" type="PackedScene" id=2]
-
-
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -82,8 +80,12 @@ _sections_unfolded = [ "Albedo", "Emission" ]
 
 [sub_resource type="CapsuleShape" id=3]
 
-radius = 1.0
+radius = 0.60161
 height = 1.0
+
+[sub_resource type="BoxShape" id=4]
+
+extents = Vector3( 1, 1, 1 )
 
 [node name="Nightshade" type="KinematicBody"]
 
@@ -448,8 +450,14 @@ _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="2"]
 
-transform = Transform( 0.555069, 0, 0, 0, -0.0561664, 0.798734, 0, -0.53256, -0.0374493, 0, 1.03337, 0 )
+transform = Transform( 0.319222, 0, 0, 0, -0.0833309, 1.18504, 0, -0.187427, -0.0131797, -0.00525439, 1.03337, 0.0154531 )
 shape = SubResource( 3 )
+disabled = true
+
+[node name="CollisionShape2" type="CollisionShape" parent="." index="3"]
+
+transform = Transform( 0.0465093, 0, 0, 0, 0.025964, 0, 0, 0, 0.0313181, 0, 0.0355344, 0 )
+shape = SubResource( 4 )
 disabled = false
 
 
