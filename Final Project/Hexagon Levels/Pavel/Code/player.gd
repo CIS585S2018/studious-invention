@@ -14,6 +14,10 @@ var pitch = 0
 
 var camera
 var third_person = false
+var ended = false
+
+func end():
+	ended = true
 
 func _ready():
 	set_process_input(true)
@@ -27,6 +31,8 @@ func _exit_scene():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
+	if ended:
+		return
 	var aim = get_node("yaw").get_global_transform().basis
 #	print(str(aim))
 #	direction = Vector3()

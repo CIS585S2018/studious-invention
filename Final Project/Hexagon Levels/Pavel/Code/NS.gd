@@ -7,11 +7,24 @@ var speed = 75
 var direction = Vector3()
 var gravity = -9.8
 var velocity = Vector3()
+var started = false
+var an
+
+func start():
+	started = true
+	an.play("default")
 
 func _process(delta):
+	if !started:
+		return
+		
 	var player = get_node("../player")
 	if (get_translation().distance_to(player.get_translation()) < 1.5):
 		get_node("../End").show()
+		get_node("../player").end()
+		started = false
+		an.stop()
+		
 	var path = get_node("../Map").get_simple_path(get_translation(),player.get_translation())
 	if (path.size() > 1):
 		direction = path[1] - path[0]
@@ -37,6 +50,5 @@ func _process(delta):
 	pass
 
 func _ready():
-	var an = get_node("walkinplace")
-	an.play("default")
+	an = get_node("walkinplace")
 	pass

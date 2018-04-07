@@ -6,7 +6,6 @@ extends Spatial
 
 func _ready():
 	get_node("End").hide()
-	get_node("Win").hide()
 	pass
 
 #func _process(delta):

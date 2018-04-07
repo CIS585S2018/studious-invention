@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Hexagon Levels/Pavel/Code/world.gd" type="Script" id=1]
 [ext_resource path="res://Hexagon Levels/Pavel/Assets/NS.tscn" type="PackedScene" id=2]
@@ -6,15 +6,80 @@
 [ext_resource path="res://Hexagon Levels/Pavel/Assets/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Hexagon Levels/Pavel/Code/player.gd" type="Script" id=5]
 [ext_resource path="res://Hexagon Levels/Pavel/Assets/MazeA.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hexagon Levels/Pavel/Start.gd" type="Script" id=7]
+[ext_resource path="res://Hexagon Levels/Pavel/EndState.gd" type="Script" id=8]
 
-[node name="world" type="Spatial"]
+[sub_resource type="BoxShape" id=3]
+
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="CubeMesh" id=4]
+
+size = Vector3( 2, 2, 2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[sub_resource type="SpatialMaterial" id=5]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0, 0, 0, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo" ]
+
+[node name="world" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
 
-transform = Transform( -0.828802, 0.186264, 0.527629, -0.559542, -0.275897, -0.781533, 0, -0.942967, 0.332886, 1.59694, 15.623, 22.9268 )
+transform = Transform( -0.828802, 0.186264, 0.527629, -0.292129, 0.660208, -0.691943, -0.477229, -0.72762, -0.492769, -11.5519, 15.623, 22.9268 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 7.0
@@ -64,14 +129,38 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Theme" ]
 
-[node name="Nightshade" parent="." index="2" instance=ExtResource( 2 )]
+[node name="Win" type="Label" parent="." index="2"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0.442554, 17.9129 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 435.0
+margin_top = 257.0
+margin_right = 615.0
+margin_bottom = 319.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "YOU WIN"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="Nightshade" parent="." index="3" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, -1, -0.340563, 0.0223575, 25.6197 )
 script = ExtResource( 3 )
 
-[node name="player" parent="." index="3" instance=ExtResource( 4 )]
+[node name="player" parent="." index="4" instance=ExtResource( 4 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70596, 0.275743, 15.5103 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94072, 0.275743, 21.6681 )
 script = ExtResource( 5 )
 
 [node name="yaw" type="Spatial" parent="player" index="7"]
@@ -92,13 +181,93 @@ size = 1.0
 near = 0.05
 far = 100.0
 
-[node name="Map" type="Navigation" parent="." index="4"]
+[node name="Map" type="Navigation" parent="." index="5"]
 
 up_vector = Vector3( 0, 1, 0 )
 
 [node name="Maze" parent="Map" index="0" instance=ExtResource( 6 )]
 
-transform = Transform( 2.05995, 0, 0, 0, 2.60407, 0, 0, 0, 2.60939, 0, 0, 0 )
+transform = Transform( 3.34992, 0, 0, 0, 1.98732, 0, 0, 0, 3.59655, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Start" type="Area" parent="." index="6"]
+
+transform = Transform( 2.41589, 0, -0.160448, 0, 3.23576, 0, 0.710633, 0, 0.448733, -3.91582, 1.39714, 19.8748 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Start" index="0"]
+
+shape = SubResource( 3 )
+disabled = false
+
+[node name="EndState" type="Area" parent="." index="7"]
+
+transform = Transform( 2.51822, 0, -0.0292954, 0, 3.23576, 0, 0.0105765, 0, 0.475654, 0.0589414, 1.39714, -27.7786 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+script = ExtResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="EndState" index="0"]
+
+shape = SubResource( 3 )
+disabled = false
+
+[node name="MeshInstance" type="MeshInstance" parent="EndState" index="1"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = SubResource( 5 )
+_sections_unfolded = [ "material" ]
+
+[connection signal="body_entered" from="Start" to="Start" method="_on_Start_body_entered"]
+
+[connection signal="body_entered" from="EndState" to="EndState" method="_on_EndState_body_entered"]
 
 
