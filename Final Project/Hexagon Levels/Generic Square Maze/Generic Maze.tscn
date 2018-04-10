@@ -18,6 +18,7 @@ script = ExtResource( 2 )
 [node name="Flag" parent="." index="2" instance=ExtResource( 3 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48004, 6.65899, 6.28236 )
+visible = false
 
 [node name="Camera" type="Camera" parent="." index="3"]
 

@@ -27,8 +27,8 @@ public class HexasphereNode : Node
 		//pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/simpler_hexa_maze.tscn"));
 		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
 		
-		hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));
-		hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));
+		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));
+		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));
 		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/simpler_hexa_maze.tscn"));
 		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
 		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Scott/level.tscn"));
@@ -36,6 +36,7 @@ public class HexasphereNode : Node
 		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Generic Square Maze/Generic Maze.tscn"));
 		//pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
 		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/Tree/TreePentagon.tscn"));
+		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
 		
         //pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jacob/Main Scene.tscn"));		
 		
