@@ -20,8 +20,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera = get_node("../yaw/CameraBase/Camera")
 	self.set_meta("name","player")
-	#flashlight = get_node("../yaw/CameraBase/Camera/SpotLight")
-	#flashlight.visible = false
+	flashlight = get_node("../yaw/CameraBase/Camera/SpotLight")
+	flashlight.visible = false
 	#$AudioStreamPlayer.play()
 
 func _enter_scene():

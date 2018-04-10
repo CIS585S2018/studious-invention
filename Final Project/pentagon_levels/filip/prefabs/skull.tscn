@@ -1,7 +1,9 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://pentagon_levels/filip/prefabs/Area.gd" type="Script" id=1]
-[ext_resource path="res://pentagon_levels/filip/prefabs/skull1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://pentagon_levels/filip/prefabs/skull.gd" type="Script" id=1]
+[ext_resource path="res://pentagon_levels/filip/prefabs/skull_basic.tscn" type="PackedScene" id=2]
+
+
 
 [sub_resource type="SphereShape" id=1]
 

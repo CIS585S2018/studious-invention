@@ -1,16 +1,10 @@
 extends Area
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 
 onready var character = get_tree().get_root().get_node("Node").find_node("player");
 
 func _ready():
 	self.set_meta("type", "killable");
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
 
 func _process(delta):
 	if(!is_visible()):
