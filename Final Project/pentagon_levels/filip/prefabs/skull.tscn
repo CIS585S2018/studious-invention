@@ -3,8 +3,6 @@
 [ext_resource path="res://pentagon_levels/filip/prefabs/skull.gd" type="Script" id=1]
 [ext_resource path="res://pentagon_levels/filip/prefabs/skull_basic.tscn" type="PackedScene" id=2]
 
-
-
 [sub_resource type="SphereShape" id=1]
 
 radius = 1.0
@@ -320,9 +318,8 @@ draw_passes = 1
 draw_pass_1 = SubResource( 12 )
 _sections_unfolded = [ "Draw Passes", "LOD", "Transform", "Visibility" ]
 
-[node name="skull1" parent="." index="3" instance=ExtResource( 2 )]
+[node name="skull_basic" parent="." index="3" instance=ExtResource( 2 )]
 
-transform = Transform( -6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, 0, 0, 0 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+transform = Transform( -6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, 0, -0.156078, 0 )
 
 
