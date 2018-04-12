@@ -1,17 +1,19 @@
 extends RigidBody
 
-var moveSpeed = 200;
-var jumpForce = 1000;
-var gravity = 100;
+var moveSpeed = 40;
+var jumpForce = 20;
+var gravity = 10;
 var m_justJumping = false;
 var gravityCompounded = Vector3();
-var max_speed = 50;
+var max_speed = 40;
 #camera control
 var camera
 var third_person = false
 var flashlight
 var pos_label
 var song=0
+var can_change_fullscreen = true;
+var fullscreen = false;
 
 onready var yaw = get_node("../yaw")
 
@@ -37,7 +39,7 @@ func _integrate_forces(state):
 	
 	#finalMoveVector is the vector that combines all forces to one
 	var mMoveDir = calculate_move_dir(); 
-	var finalMoveVector = state.get_linear_velocity()*0.98 + (mMoveDir + gravity_vec)*state.get_step();
+	var finalMoveVector = state.get_linear_velocity() + (mMoveDir + gravity_vec)*state.get_step();
 		
 	#jumping
 	if(Input.is_key_pressed(KEY_SPACE)):
@@ -109,10 +111,15 @@ func _input(ie):
 		shoot()
 		pass
 	
-	if ie is InputEventKey and Input.is_key_pressed(KEY_F):
-		OS.window_fullscreen = not OS.window_fullscreen
+	if ie is InputEventKey and !Input.is_key_pressed(KEY_F):
+		can_change_fullscreen = true;
+			
+			
+	if ie is InputEventKey and Input.is_key_pressed(KEY_F) && can_change_fullscreen:
+		can_change_fullscreen = false;
+		fullscreen = !fullscreen;
+		OS.set_window_fullscreen(fullscreen);
 #		get_node("crosshair/Label").visible = not get_node("crosshair/Label").visible
-		pass
 		
 	if ie is InputEventKey and Input.is_key_pressed(KEY_L):
 		flashlight.visible = not flashlight.visible

@@ -24,7 +24,7 @@ background_color = Color( 0, 0, 0, 1 )
 background_energy = 1.0
 background_canvas_max_layer = 0
 ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 0.1
+ambient_light_energy = 0.25
 ambient_light_sky_contribution = 1.0
 fog_enabled = false
 fog_color = Color( 0.5, 0.6, 0.7, 1 )
@@ -95,7 +95,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light" ]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -144,27 +144,15 @@ transform = Transform( 1.12583, 0, 0.65, 0, 1.3, 0, -0.65, 0, 1.12583, -0.021765
 mode = 2
 angular_damp = 128.0
 
-[node name="draw" type="ImmediateGeometry" parent="." index="3"]
-
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 
 environment = SubResource( 3 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="." index="5"]
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="4"]
 
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
+light_energy = 2.0
 light_indirect_energy = 0.0
 light_negative = false
 light_specular = 0.0

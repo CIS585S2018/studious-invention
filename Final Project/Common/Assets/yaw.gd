@@ -16,4 +16,3 @@ func _process(delta):
 	var tmp = -pos.normalized();
 	look_at_from_position(pos,Vector3(0,0,0),Vector3(0,0,1));
 	rotate_object_local(Vector3(1,0,0),-PI/2);
-	
