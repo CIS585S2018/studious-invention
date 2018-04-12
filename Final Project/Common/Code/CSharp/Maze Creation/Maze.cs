@@ -20,6 +20,7 @@ namespace FinalProject.MazeCreation
             endCell = GetClosestCellToPosition(endPosition);
             GenerateInitialCellDistances();
             CreateMainPathThroughMaze();
+            CreateRandomPathsThroughMaze();
             //CreatePathThroughMaze(startCell, endCell);
             //CreateRandomMazePaths();
             //Open the end and start of the maze
@@ -101,6 +102,68 @@ namespace FinalProject.MazeCreation
             linkedList.AddLast(cell);
         }
 
+        private void CreateRandomPathsThroughMaze() {
+            var availableDirections = new List<int>(4);
+            foreach (Cell cell in cells) {
+                if (cell.IsInPath == false) {
+                    //Open a random side as long as it goes to another cell
+                    //If that other cell is in the path, mark this as in the path
+                    //Construct a list of available cells
+                    var leftCell = cell.LeftCell;
+                    if (leftCell != null)
+                    {
+                        availableDirections.Add(1);
+                    }
+                    var rightCell = cell.RightCell;
+                    if (rightCell != null)
+                    {
+                        availableDirections.Add(2);
+                    }
+                    var topCell = cell.TopCell;
+                    if (topCell != null)
+                    {
+                        availableDirections.Add(3);
+                    }
+                    var bottomCell = cell.BottomCell;
+                    if (bottomCell != null)
+                    {
+                        availableDirections.Add(4);
+                    }
+                    if (availableDirections.Count == 0)
+                    {
+                        break;
+                    }
+                    //Move a random direction in the available cells
+                    var chosenDirection = availableDirections[random.Next(availableDirections.Count)];
+                    availableDirections.Clear();
+                    Cell chosenCell = null;
+                    if (chosenDirection == 1)
+                    {
+                        chosenCell = leftCell;
+                        cell.LeftWall.KnockedDown = true;
+                    } else
+                    if (chosenDirection == 2)
+                    {
+                        chosenCell = rightCell;
+                        cell.RightWall.KnockedDown = true;
+                    } else
+                    if (chosenDirection == 3)
+                    {
+                        chosenCell = topCell;
+                        cell.TopWall.KnockedDown = true;
+                    } else
+                    if (chosenDirection == 4)
+                    {
+                        chosenCell = bottomCell;
+                        cell.BottomWall.KnockedDown = true;
+                    }
+                    if (chosenCell.IsInPath) {
+                        cell.IsInPath = true;
+                    }
+                }
+            }
+        }
+
         private void CreateMainPathThroughMaze() {
             //Start at the start, choose a random cell if it has a distance number and not in a path
             var currentCell = startCell;
@@ -141,17 +204,17 @@ namespace FinalProject.MazeCreation
                 if (chosenDirection == 1) {
                     chosenCell = leftCell;
                     currentCell.LeftWall.KnockedDown = true;
-                }
+                } else
                 if (chosenDirection == 2)
                 {
                     chosenCell = rightCell;
                     currentCell.RightWall.KnockedDown = true;
-                }
+                } else
                 if (chosenDirection == 3)
                 {
                     chosenCell = topCell;
                     currentCell.TopWall.KnockedDown = true;
-                }
+                } else
                 if (chosenDirection == 4)
                 {
                     chosenCell = bottomCell;
