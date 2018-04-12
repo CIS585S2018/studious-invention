@@ -7,7 +7,7 @@ path="res://.import/Hexagon.dae-54a872ddcb4791695b1fc899669da8ac.scn"
 [deps]
 
 source_file="res://assets/models/Hexagon.dae"
-source_md5="c255ce0e6c46dc8c9f1b58aba65e6dcc"
+source_md5="932018d8159b71a86a32a783bda31076"
 
 dest_files=[ "res://.import/Hexagon.dae-54a872ddcb4791695b1fc899669da8ac.scn" ]
 dest_md5="e05b7dc35693209aaf07bedfe482c0fb"

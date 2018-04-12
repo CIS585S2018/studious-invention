@@ -7,7 +7,7 @@ path="res://.import/Pentagon.dae-9c31b39bafdc9ed089e4bfd9c77bb5b7.scn"
 [deps]
 
 source_file="res://assets/models/Pentagon.dae"
-source_md5="ea87c02889960ecd4c3eb2ab995c43d5"
+source_md5="9b7c5f4750edb48243263dbca55134e7"
 
 dest_files=[ "res://.import/Pentagon.dae-9c31b39bafdc9ed089e4bfd9c77bb5b7.scn" ]
 dest_md5="b3061e5c4b6a1ef96927569218ea5a7f"

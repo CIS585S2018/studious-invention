@@ -7,7 +7,7 @@ path="res://.import/skull.dae-a4cad84519676101ddbca8260b0e7811.scn"
 [deps]
 
 source_file="res://assets/models/skull.dae"
-source_md5="4277fe47103dc7e259ad75c06f2c319b"
+source_md5="d56a96b4dfb1c5125fdafc607c1e0d19"
 
 dest_files=[ "res://.import/skull.dae-a4cad84519676101ddbca8260b0e7811.scn" ]
 dest_md5="30587dd7f67965659b109a9348cb7e16"

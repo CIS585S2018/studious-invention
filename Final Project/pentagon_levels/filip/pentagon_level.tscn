@@ -8,7 +8,7 @@
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="scene" type="Spatial"]
+[node name="scene" type="Spatial" index="0"]
 
 _sections_unfolded = [ "Transform", "Visibility" ]
 
