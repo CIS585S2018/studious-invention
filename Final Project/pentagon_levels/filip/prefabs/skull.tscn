@@ -320,6 +320,7 @@ _sections_unfolded = [ "Draw Passes", "LOD", "Transform", "Visibility" ]
 
 [node name="skull_basic" parent="." index="3" instance=ExtResource( 2 )]
 
-transform = Transform( -6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, 0, -0.156078, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0180973, 0 )
+_sections_unfolded = [ "Transform" ]
 
 

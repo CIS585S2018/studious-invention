@@ -7,7 +7,7 @@ path="res://.import/shoot_level_pentagon.dae-9e042861c7f72d50ed935d1e327d65d8.sc
 [deps]
 
 source_file="res://assets/models/shoot_level_pentagon.dae"
-source_md5="cbd6bc05df64d21d8219d5c83298ad60"
+source_md5="6926f253d1bf484782652c03f5886245"
 
 dest_files=[ "res://.import/shoot_level_pentagon.dae-9e042861c7f72d50ed935d1e327d65d8.scn" ]
 dest_md5="eceba2525ce13925692a7ab6afa81239"
