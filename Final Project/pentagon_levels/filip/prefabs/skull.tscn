@@ -197,7 +197,7 @@ _sections_unfolded = [ "Albedo", "Parameters" ]
 material = SubResource( 11 )
 size = Vector2( 0.05, 0.05 )
 
-[node name="skull" type="Area" index="0"]
+[node name="skull" type="Area"]
 
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 input_ray_pickable = false
@@ -320,7 +320,7 @@ _sections_unfolded = [ "Draw Passes", "LOD", "Transform", "Visibility" ]
 
 [node name="skull_basic" parent="." index="3" instance=ExtResource( 2 )]
 
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0180973, 0 )
+transform = Transform( 1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, -0.0180973, 0 )
 _sections_unfolded = [ "Transform" ]
 
 

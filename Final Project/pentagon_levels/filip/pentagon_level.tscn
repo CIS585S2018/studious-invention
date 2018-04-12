@@ -8,7 +8,7 @@
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="scene" type="Spatial" index="0"]
+[node name="scene" type="Spatial"]
 
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -51,27 +51,27 @@ visible = false
 
 [node name="skull2" parent="skulls" index="0" instance=ExtResource( 3 )]
 
-transform = Transform( 0.249469, 0, -0.968383, 0, 1, 0, 0.968383, 0, 0.249469, 2.4798, 0, 1.78448 )
+transform = Transform( 0.249469, 0, -0.968383, 0, 1, 0, 0.968383, 0, 0.249469, 2.00935, 0, 1.9492 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="skull3" parent="skulls" index="1" instance=ExtResource( 3 )]
 
-transform = Transform( -0.833325, 0, -0.552783, 0, 1, 0, 0.552783, 0, -0.833325, 1.09307, 0, 4.75415 )
+transform = Transform( -0.78846, 0, -0.615085, 0, 1, 0, 0.615085, 0, -0.78846, 0.865637, 0, 4.33387 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="skull1" parent="skulls" index="2" instance=ExtResource( 3 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316699, 0, 0.142092 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="skull4" parent="skulls" index="3" instance=ExtResource( 3 )]
 
-transform = Transform( -0.74193, 0, 0.670478, 0, 1, 0, -0.670478, 0, -0.74193, -1.83013, 0, 4.22893 )
+transform = Transform( -0.74193, 0, 0.670478, 0, 1, 0, -0.670478, 0, -0.74193, -1.72487, 0, 4.16616 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="skull5" parent="skulls" index="4" instance=ExtResource( 3 )]
 
-transform = Transform( 0.515385, 0, 0.856959, 0, 1, 0, -0.856959, 0, 0.515385, -2.50182, 0, 1.4155 )
+transform = Transform( 0.515385, 0, 0.856959, 0, 1, 0, -0.856959, 0, 0.515385, -2.23517, 0, 1.6236 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
