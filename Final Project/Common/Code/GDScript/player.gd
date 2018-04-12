@@ -1,7 +1,7 @@
 extends RigidBody
 
 var moveSpeed = 40;
-var jumpForce = 20;
+var jumpForce = 1;
 var gravity = 10;
 var m_justJumping = false;
 var gravityCompounded = Vector3();
@@ -67,6 +67,7 @@ func use_thing():
 	var ray = self.get_node("../yaw/CameraBase/Camera/ray")
 	if ray.is_colliding():
 		var object = ray.get_collider()
+		print("ray colliding with ",object)
 		var type = object.get_meta("type")
 		if type == "usable":
 #			print("attempting to use ",object," of type ",type," and name ",object.get_meta("name"))

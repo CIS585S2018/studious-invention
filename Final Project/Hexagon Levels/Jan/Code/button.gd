@@ -40,7 +40,7 @@ func swap_to_4():
 	set3.start_animation(true, -3, 0)
 	set4.start_animation(false, 3, 45)
 	self.get_node("OmniLight").visible = true
-	wall_parent.get_node("../DirectionalLight").visible = false
+#	wall_parent.get_node("../DirectionalLight").visible = false # this light is no longer in the scene
 	ghost_parent.add_child(ghost)
 	self.translation.y = -20
 	ghost.translation.y += 20
@@ -51,7 +51,7 @@ func swap_to_3():
 	set3.start_animation(false, 3, 45)
 	set3.visible = true
 	self.get_node("OmniLight").visible = true
-	wall_parent.get_node("../DirectionalLight").visible = false
+#	wall_parent.get_node("../DirectionalLight").visible = false
 	wall_parent.get_node("../floor").translation -= Vector3(0,0.5,0)
 	self.translation.x = 0
 	self.translation.z = 0

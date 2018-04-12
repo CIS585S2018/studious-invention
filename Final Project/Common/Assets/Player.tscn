@@ -7,7 +7,7 @@
 
 radius = 1.0
 
-[node name="player" type="RigidBody" index="0"]
+[node name="player" type="RigidBody"]
 
 transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0 )
 input_ray_pickable = true
