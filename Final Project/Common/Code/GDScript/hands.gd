@@ -7,6 +7,8 @@ onready var firepart = get_node("parts/fire_part");
 onready var fireflow = get_node("parts/fire_flow");
 onready var an = get_node("AnimationPlayer");
 #var test_yaw = 0;
+onready var lhand = get_node("../Camera/l_hand_ray");
+onready var rhand = get_node("../Camera/r_hand_ray");
 
 func _ready():
 	an.play("ArmatureAction");
@@ -24,21 +26,37 @@ func _process(delta):
 		
 func castLeft():
 	an.play("left_fire",0.1,1,false);
+	
 	coldpart.hide();
 	coldflow.show();
 	fireflow.hide();
 	firepart.show();
 	camBase.mIsFiring[0] = true;
-	camBase.mIsFiring[1] = false;
+	camBase.mIsFiring[1] = false;	
+	
+	if lhand.is_colliding():
+		var object = lhand.get_collider()
+		var type = object.get_meta("type") # spams errors if the object doesn't have a type set, doesn't crash tho
+		print("shooting at ",object)
+		if type == "killable":
+			object.onDeath()
 			
 func castRight():
 	an.play("right_fire",0.1,1,false);
+	
 	firepart.hide();
 	fireflow.show();
 	coldflow.hide();
 	coldpart.show();
 	camBase.mIsFiring[0] = false;
 	camBase.mIsFiring[1] = true;
+	
+	if rhand.is_colliding():
+		var object = rhand.get_collider()
+		var type = object.get_meta("type") # spams errors if the object doesn't have a type set, doesn't crash tho
+		print("shooting at ",object)
+		if type == "killable":
+			object.onDeath()
 #func _input(event):		
 	"""if(Input.is_key_pressed(KEY_C)):
 		test_yaw -= 2;

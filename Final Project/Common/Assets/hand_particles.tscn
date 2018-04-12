@@ -5,7 +5,6 @@
 [ext_resource path="res://Common/Assets/hand/cold_part_flow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Common/Assets/hand/cold_part.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="CubeMesh" id=1]
 
 size = Vector3( 2, 2, 2 )
@@ -65,7 +64,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[node name="hand_particles" type="Spatial" index="0"]
+[node name="hand_particles" type="Spatial"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0513062, 0 )
 

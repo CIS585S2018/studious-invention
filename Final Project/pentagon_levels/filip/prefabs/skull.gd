@@ -13,4 +13,5 @@ func _process(delta):
 	var mypos = self.get_translation();
 	var dir = (character.get_translation()).normalized();
 
-	
+func onDeath():
+	self.queue_free();

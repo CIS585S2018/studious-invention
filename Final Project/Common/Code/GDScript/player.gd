@@ -17,6 +17,7 @@ var fullscreen = false;
 
 onready var yaw = get_node("../yaw")
 
+
 func _ready():
 	set_process_input(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -82,7 +83,7 @@ func shoot():
 		var type = object.get_meta("type") # spams errors if the object doesn't have a type set, doesn't crash tho
 		print("shooting at ",object)
 		if type == "killable":
-			object.get_node("..").onDeath()
+			object.onDeath()
 	pass
 	
 func change_pov():
