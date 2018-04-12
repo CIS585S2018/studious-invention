@@ -72,7 +72,7 @@ anchor_bottom = 0.0
 margin_left = 2.0
 margin_top = 23.0
 margin_right = 187.0
-margin_bottom = 105.0
+margin_bottom = 166.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -84,6 +84,7 @@ space to jump
 E to use items
 F to toggle full screen
 L to toggle flashlight
+P to reposition (debug purposes)
 esc to exit"
 percent_visible = 1.0
 lines_skipped = 0

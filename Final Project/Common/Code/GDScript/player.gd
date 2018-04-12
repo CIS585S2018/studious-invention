@@ -114,7 +114,9 @@ func _input(ie):
 	
 	if ie is InputEventKey and !Input.is_key_pressed(KEY_F):
 		can_change_fullscreen = true;
-			
+		
+	if ie is InputEventKey and Input.is_key_pressed(KEY_P):
+		self.translation = Vector3(0,0,0)
 			
 	if ie is InputEventKey and Input.is_key_pressed(KEY_F) && can_change_fullscreen:
 		can_change_fullscreen = false;
