@@ -22,11 +22,12 @@ func _ready():
 	set4 = wall_parent.get_node("generated_maze2")
 	ghost_parent = scene_root
 	ghost = ghost_parent.get_node("follower")
-	ghost.translation.y -= 20
 	set1.visible = true
 	wall_parent.remove_child(set2) #we don't want the second set yet
 	wall_parent.remove_child(set3)
 	wall_parent.remove_child(set4)
+#	ghost_parent.remove_child(ghost)
+	ghost_parent.call_deferred("remove_child",ghost)
 	pass
 
 #func _process(delta):
@@ -40,7 +41,6 @@ func swap_to_4():
 	set3.start_animation(true, -3, 0)
 	set4.start_animation(false, 3, 45)
 	self.get_node("OmniLight").visible = true
-#	wall_parent.get_node("../DirectionalLight").visible = false # this light is no longer in the scene
 	ghost_parent.add_child(ghost)
 	self.translation.y = -20
 	ghost.translation.y += 20
@@ -51,7 +51,6 @@ func swap_to_3():
 	set3.start_animation(false, 3, 45)
 	set3.visible = true
 	self.get_node("OmniLight").visible = true
-#	wall_parent.get_node("../DirectionalLight").visible = false
 	wall_parent.get_node("../floor").translation -= Vector3(0,0.5,0)
 	self.translation.x = 0
 	self.translation.z = 0
@@ -64,6 +63,7 @@ func swap_to_2():
 	set2.visible = true
 	self.get_node("OmniLight").visible = false
 	self.translation = Vector3(-17.43, 0.475, -3.13)
+	ghost_parent.add_child(ghost) #debug
 	pass
 
 func use(object):
