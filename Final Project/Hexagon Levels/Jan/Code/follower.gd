@@ -4,7 +4,7 @@ extends KinematicBody
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var speed = 0.5
+var speed = 0.25
 var trigger_distance = 5
 var player
 var moving = false
@@ -18,9 +18,9 @@ func _ready():
 	# Initialization here
 	var scene_root = self.get_node("..")
 	var sphere_root = scene_root.get_node("..")
-	player = get_node("../player")
-	self.get_node("Area").set_meta("type","killable")
-	self.get_node("Area").set_meta("name","follower")
+	player = sphere_root.get_node("player")
+	self.set_meta("type","killable")
+	self.set_meta("name","follower")
 	pass
 	
 # start chasing after the player when they come a little closer
@@ -38,16 +38,16 @@ func start_moving():
 		moving = true
 
 func _process(delta):
-	start_moving()
-	if not moving:
-		return
+#	start_moving()
+#	if not moving:
+#		return	
 	
-	# move towards the player slowly
 	var player_origin = player.get_global_transform().origin
 	var enemy_origin = self.get_global_transform().origin
 	var direction = player_origin - enemy_origin
-	direction.y = 0
-	self.move_and_slide(direction * speed, Vector3(0,1,0))
+#	print(enemy_origin, player_origin, direction)
 	# turn towards the player
-	self.look_at(player_origin, Vector3(0,1,0))
+	self.look_at(player_origin, -player.gravity_vec)
+	# move towards the player slowly
+	self.move_and_slide(direction * speed, -player.gravity_vec)
 	pass

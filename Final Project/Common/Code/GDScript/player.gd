@@ -14,6 +14,7 @@ var pos_label
 var song=0
 var can_change_fullscreen = true;
 var fullscreen = false;
+var gravity_vec
 
 onready var yaw = get_node("../yaw")
 
@@ -35,7 +36,7 @@ func _exit_scene():
 
 func _integrate_forces(state):
 	
-	var gravity_vec =  get_global_transform().origin.normalized() * gravity;
+	gravity_vec =  get_global_transform().origin.normalized() * gravity;
 	PhysicsServer.area_set_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR , gravity_vec);
 	
 	#finalMoveVector is the vector that combines all forces to one
