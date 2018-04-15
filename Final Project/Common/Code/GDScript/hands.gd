@@ -23,6 +23,7 @@ func _process(delta):
 		camBase.mIsFiring[0] = false;
 		camBase.mIsFiring[1] = false;
 		
+	handle_rays()
 		
 func castLeft():
 	an.play("left_fire",0.1,1,false);
@@ -32,15 +33,8 @@ func castLeft():
 	fireflow.hide();
 	firepart.show();
 	camBase.mIsFiring[0] = true;
-	camBase.mIsFiring[1] = false;	
-	
-	if lhand.is_colliding():
-		var object = lhand.get_collider()
-		var type = object.get_meta("type") # spams errors if the object doesn't have a type set, doesn't crash tho
-		print("shooting at ",object)
-		if type == "killable":
-			object.onDeath()
-			
+	camBase.mIsFiring[1] = false;
+
 func castRight():
 	an.play("right_fire",0.1,1,false);
 	
@@ -50,13 +44,17 @@ func castRight():
 	coldpart.show();
 	camBase.mIsFiring[0] = false;
 	camBase.mIsFiring[1] = true;
-	
-	if rhand.is_colliding():
-		var object = rhand.get_collider()
-		var type = object.get_meta("type") # spams errors if the object doesn't have a type set, doesn't crash tho
-		print("shooting at ",object)
-		if type == "killable":
+
+func handle_rays(): # shoot rays for the whole duration of the animation
+	var object = null
+	if camBase.mIsFiring[0] and lhand.is_colliding(): # left ray
+		object = lhand.get_collider()
+	if camBase.mIsFiring[1] and rhand.is_colliding(): # right ray
+		object = rhand.get_collider()
+		
+	if object and object.has_meta("type") and object.get_meta("type") == "killable":
 			object.onDeath()
+	
 #func _input(event):		
 	"""if(Input.is_key_pressed(KEY_C)):
 		test_yaw -= 2;
