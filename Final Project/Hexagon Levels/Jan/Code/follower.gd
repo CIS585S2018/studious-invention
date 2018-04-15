@@ -23,24 +23,27 @@ func _ready():
 	self.set_meta("name","follower")
 	pass
 	
-# start chasing after the player when they come a little closer
-func start_moving():
-	if moving:
-		return
-	if player == null:
-		return
+	
+func get_distance():
 	var player_pos = player.translation
 	var my_pos = self.translation
 	var dir = player_pos - my_pos
-	var dist = dir.length()
-#	print(dist)
-	if dist <= trigger_distance:
+	return dir.length()
+	
+# start chasing after the player when they come a little closer
+func start_moving():
+	if moving or (player == null):
+		return
+		
+	# broken in 3d sphere
+	if get_distance() <= trigger_distance:
 		moving = true
 
 func _process(delta):
 #	start_moving()
 #	if not moving:
 #		return	
+#	print(get_distance())
 	
 	var player_origin = player.get_global_transform().origin
 	var enemy_origin = self.get_global_transform().origin
