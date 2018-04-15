@@ -5,7 +5,7 @@ extends KinematicBody
 # var a = 2
 # var b = "textvar"
 var speed = 0.25
-var trigger_distance = 5
+var trigger_distance = 7.5
 var player
 var moving = false
 
@@ -24,33 +24,27 @@ func _ready():
 	pass
 	
 	
-func get_distance():
-	var player_pos = player.translation
-	var my_pos = self.translation
-	var dir = player_pos - my_pos
-	return dir.length()
+func get_player_dir():
+	var player_pos = player.get_global_transform().origin
+	var enemy_pos = self.get_global_transform().origin
+	return (player_pos - enemy_pos)
 	
 # start chasing after the player when they come a little closer
 func start_moving():
 	if moving or (player == null):
 		return
-		
-	# broken in 3d sphere
-	if get_distance() <= trigger_distance:
+
+	if get_player_dir().length() <= trigger_distance:
 		moving = true
+		print("boo!")
 
 func _process(delta):
-#	start_moving()
-#	if not moving:
-#		return	
-#	print(get_distance())
+	if not moving:
+		start_moving()
+		return
 	
 	var player_origin = player.get_global_transform().origin
-	var enemy_origin = self.get_global_transform().origin
-	var direction = player_origin - enemy_origin
-#	print(enemy_origin, player_origin, direction)
 	# turn towards the player
 	self.look_at(player_origin, -player.gravity_vec)
 	# move towards the player slowly
-	self.move_and_slide(direction * speed, -player.gravity_vec)
-	pass
+	self.move_and_slide(get_player_dir() * speed, -player.gravity_vec)
