@@ -5,7 +5,7 @@ var jumpForce = 1;
 var gravity = 10;
 var m_justJumping = false;
 var gravityCompounded = Vector3();
-var max_speed = 40;
+var max_speed = 20;
 #camera control
 var camera
 var third_person = false

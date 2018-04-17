@@ -40,7 +40,7 @@ _sections_unfolded = [ "Angular", "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
-transform = Transform( 0.2, 0, 1.09314e-15, 0, 0.2, 0, -1.09314e-15, 0, 0.2, 0, 1.2, 0 )
+transform = Transform( 0.2, 0, 1.09314e-15, 0, 0.2, 0, -1.09314e-15, 0, 0.2, 0, 0, 0 )
 shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
