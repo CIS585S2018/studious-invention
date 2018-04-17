@@ -53,7 +53,7 @@ func handle_rays(): # shoot rays for the whole duration of the animation
 		object = rhand.get_collider()
 		
 	if object and object.has_meta("type") and object.get_meta("type") == "killable":
-			object.onDeath()
+		object.onDeath()
 	
 #func _input(event):		
 	"""if(Input.is_key_pressed(KEY_C)):

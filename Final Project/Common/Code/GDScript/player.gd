@@ -97,8 +97,8 @@ func _input(ie):
 	if ie is InputEventKey and Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
-	if ie is InputEventKey and Input.is_key_pressed(KEY_C):
-		change_pov()
+#	if ie is InputEventKey and Input.is_key_pressed(KEY_C):
+#		change_pov()
 		
 	if ie is InputEventKey and Input.is_key_pressed(KEY_E):
 		use_thing()
