@@ -1,11 +1,11 @@
 extends RigidBody
 
-var moveSpeed = 40;
-var jumpForce = 1;
+var moveSpeed = 1000;
+var jumpForce = 10;
 var gravity = 10;
 var m_justJumping = false;
 var gravityCompounded = Vector3();
-var max_speed = 20;
+var max_speed = 5;
 #camera control
 var camera
 var third_person = false
@@ -41,8 +41,8 @@ func _integrate_forces(state):
 	
 	#finalMoveVector is the vector that combines all forces to one
 	var mMoveDir = calculate_move_dir(); 
-	var finalMoveVector = state.get_linear_velocity() + (mMoveDir + gravity_vec)*state.get_step();
-		
+	var finalMoveVector = state.get_linear_velocity()*0.96 + (mMoveDir + gravity_vec)*state.get_step();
+	
 	#jumping
 	if(Input.is_key_pressed(KEY_SPACE)):
 		if(!m_justJumping):
