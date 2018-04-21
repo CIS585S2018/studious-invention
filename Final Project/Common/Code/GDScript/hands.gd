@@ -26,7 +26,7 @@ func _process(delta):
 	handle_rays()
 		
 func castLeft():
-	an.play("left_fire",0.1,1,false);
+	an.play("left_fire",0.1,8,false);
 	
 	coldpart.hide();
 	coldflow.show();
@@ -36,7 +36,7 @@ func castLeft():
 	camBase.mIsFiring[1] = false;
 
 func castRight():
-	an.play("right_fire",0.1,1,false);
+	an.play("right_fire",0.1,8,false);
 	
 	firepart.hide();
 	fireflow.show();
