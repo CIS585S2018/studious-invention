@@ -2,7 +2,7 @@ extends Spatial
 
 var yaw = 0;
 var pitch = 0;
-var view_sensitivity = .3;
+var view_sensitivity = .15;
 
 onready var hands = get_node("hands");
 onready var camera = get_node("Camera");

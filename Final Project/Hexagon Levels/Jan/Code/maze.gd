@@ -1,10 +1,7 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 var animation = false
-var frames_left = 90 #animation duration
+var frames_left = 120 #animation duration
 var frame_offset = 0
 var frames_since_start = 0
 var movement = Vector3(0, 0.05, 0) #change in Y-coord in each frame
@@ -13,12 +10,9 @@ var destroy = false
 
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
 func start_animation(dest, dir, offset):
-	self.frames_left = 90
 	self.animation = true
 	self.destroy = dest #free the node after the animation is complete?
 	self.direction = dir #sinking (<0) or rising (>0)
@@ -40,7 +34,3 @@ func _process(delta):
 				return
 			animation = false
 		self.translation += movement * direction
-		pass
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass

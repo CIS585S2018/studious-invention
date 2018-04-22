@@ -54,10 +54,12 @@ func _physics_process(delta):
 		if(!m_justJumping):
 			finalMoveVector -= gravity_vec*jumpForce; 
 			m_justJumping = true;
-	else :
-		if(is_on_floor()):
-			if(m_justJumping):
-				m_justJumping = false;
+	elif Input.is_key_pressed(KEY_H):
+		if !m_justJumping:
+			finalMoveVector -= gravity_vec*jumpForce*1.5; 
+			m_justJumping = true;
+	elif is_on_floor() and m_justJumping:
+			m_justJumping = false;
 			
 	#if(finalMoveVector.length() > max_speed):
 	#	finalMoveVector = finalMoveVector.normalized()*max_speed;
