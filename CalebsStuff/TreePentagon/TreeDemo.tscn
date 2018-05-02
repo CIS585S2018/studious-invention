@@ -4,7 +4,7 @@
 [ext_resource path="res://Models/BarkDeciduous007_COL_1K.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Hexasphere/Assets/Player.tscn" type="PackedScene" id=3]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
 flags_transparent = false
@@ -56,7 +56,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=2]
 
 render_priority = 0
 flags_transparent = false
@@ -109,7 +109,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Clearcoat", "Depth", "Detail", "Distance Fade", "Emission", "Metallic", "Proximity Fade", "Refraction", "Rim", "Roughness", "Subsurf Scatter", "Transmission", "UV1" ]
 
-[sub_resource type="ProceduralSky" id=1]
+[sub_resource type="ProceduralSky" id=3]
 
 radiance_size = 4
 sky_top_color = Color( 0.0470588, 0.454902, 0.976471, 1 )
@@ -129,10 +129,10 @@ sun_curve = 0.05
 sun_energy = 16.0
 texture_size = 2
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=4]
 
 background_mode = 0
-background_sky = SubResource( 1 )
+background_sky = SubResource( 3 )
 background_sky_custom_fov = 0.0
 background_color = Color( 0, 0, 0, 1 )
 background_energy = 1.0
@@ -215,16 +215,15 @@ _sections_unfolded = [ "Ambient Light", "Background" ]
 
 [node name="Cylinder" parent="TreePentagon/Pentagon" index="0"]
 
-material/0 = SubResource( 3 )
+material/0 = SubResource( 1 )
 
 [node name="Cylinder" parent="TreePentagon/ClimbingTree" index="0"]
 
-material/0 = SubResource( 4 )
-_sections_unfolded = [ "material" ]
+material/0 = SubResource( 2 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
 
-environment = SubResource( 2 )
+environment = SubResource( 4 )
 
 [node name="player" parent="." index="2" instance=ExtResource( 3 )]
 
@@ -242,6 +241,14 @@ visible = true
 [node name="SpotLight" parent="player/yaw" index="1"]
 
 light_cull_mask = -1
+
+[node name="poslabel" parent="player" index="8"]
+
+rect_clip_content = false
+
+[node name="instr" parent="player" index="9"]
+
+rect_clip_content = false
 
 
 [editable path="TreePentagon"]
