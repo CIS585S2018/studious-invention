@@ -22,11 +22,11 @@ func _ready():
 	# Initialization here
 	self.get_node("Area").set_meta("type","usable")
 	self.get_node("Area").set_meta("name","button")
-	player = get_tree().get_root().get_node("PyramidDemo/player")
-	teleport_spot = get_tree().get_root().get_node("PyramidDemo/teleport_spot")
-	wall = get_tree().get_root().get_node("PyramidDemo/PuzzlePyramid/wall")
+	#player = get_tree().get_root().get_node("PyramidDemo/player")
+	teleport_spot = get_node("../teleport_spot")
+	wall = get_node("../wall")
 	wall.visible = false
-	wallArea = get_tree().get_root().get_node("PyramidDemo/PuzzlePyramid/wallArea")
+	wallArea = get_node("../wallArea")
 	#wall_parent = get_tree().get_root().get_node("maze/walls")
 	#set1 = wall_parent.get_node("maze1") #a set of walls that makes up the first part of the maze
 	#set2 = wall_parent.get_node("maze2")
@@ -42,9 +42,9 @@ func _ready():
 	pass
 
 func _process(delta):
-	if (wallArea.overlaps_area(player.get_node("Area")) &&  !completed): 
-		wall.scale.y = 1
-		wall.visible = true
+	#if (wallArea.overlaps_area(player.get_node("Area")) &&  !completed): 
+	#	wall.scale.y = 1
+	#	wall.visible = true
 		
 	pass
 

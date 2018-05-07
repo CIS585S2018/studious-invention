@@ -11,6 +11,7 @@ public class HexasphereNode : Node
     List<PackedScene> hexagons = new List<PackedScene>();
     List<PackedScene> pentagons = new List<PackedScene>();
     PackedScene tower = null;
+	PackedScene pyramid = null; 
     int placedPentagons = 0;
     Random random = new Random();
     public override void _Ready()
@@ -39,7 +40,8 @@ public class HexasphereNode : Node
 		//pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
 		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/Tree/TreePentagon.tscn"));
 		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
-		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/PyramidPentagon/PuzzlePyramid.tscn"));
+		pyramid = (PackedScene)ResourceLoader.Load("res://pentagon_levels/PyramidPentagon/PuzzlePyramid.tscn");
+		pentagons.Add(pyramid);
 		tower = (PackedScene)ResourceLoader.Load("res://pentagon_levels/Tower/Tower.tscn");
 		
         //pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jacob/Main Scene.tscn"));		
@@ -149,6 +151,10 @@ public class HexasphereNode : Node
             //GD.Print("Pentagon Radius: " + polygonRadius + ", side length: " + polygonSideLength);
             //Create instance
             groundTest = GetRandomPentagon();
+			if (groundTest == pyramid.Instance())
+			{ 
+				//tile.queue_free(); 
+			}
         }
         else if (points.Count == 6)
         {

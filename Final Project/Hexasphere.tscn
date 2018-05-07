@@ -16,11 +16,11 @@ subdivide_depth = 0
 
 extents = Vector3( 0.518013, 0.0613279, 0.477606 )
 
-[sub_resource type="SphereShape" id=4]
+[sub_resource type="SphereShape" id=3]
 
 radius = 1.0
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=4]
 
 background_mode = 0
 background_sky_custom_fov = 0.0
@@ -144,6 +144,7 @@ transform = Transform( -1.12583, 0, -0.65, 0, 1.3, -1.69407e-21, 0.65, 0, -1.125
 
 [node name="player" parent="." index="2" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 transform = Transform( 1.12583, 0, 0.65, 0, 1.3, 0, -0.65, 0, 1.12583, -0.0217657, -7.61972, -0.00630975 )
 
 [node name="Area" type="Area" parent="player" index="6"]
@@ -171,12 +172,12 @@ reverb_bus_uniformity = 0.0
 
 [node name="CollisionShape" type="CollisionShape" parent="player/Area" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 disabled = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 
-environment = SubResource( 3 )
+environment = SubResource( 4 )
 
 [node name="OmniLight" type="OmniLight" parent="." index="4"]
 

@@ -12,7 +12,7 @@ func _ready():
 	# Initialization here
 	triggered = false
 	completed = false
-	wall = get_node("../wall")
+	wall = get_node("../Wall")
 	wall.visible = false
 	pass
 
@@ -22,9 +22,11 @@ func _ready():
 #	pass
 
 
-func _on_wallArea_area_entered(area):
+
+func _on_Area_area_entered(area):
 	if(completed == false): 
 		triggered = true
 		wall.visible = true
 		wall.scale.y = 3
+		print("Area has been entered")
 	pass # replace with function body

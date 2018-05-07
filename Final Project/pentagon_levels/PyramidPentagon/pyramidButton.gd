@@ -19,8 +19,8 @@ func _ready():
 	# Initialization here
 	self.get_node("Area").set_meta("type","usable")
 	self.get_node("Area").set_meta("name","button")	
-	player = get_tree().get_root().get_node("PyramidDemo/player")
-	teleport_spot = get_tree().get_root().get_node("PyramidDemo/teleport_spot")
+	#player = get_tree().get_root().get_node("PyramidDemo/player")
+	teleport_spot = get_node("../teleport_spot")
 	#wall_parent = get_tree().get_root().get_node("maze/walls")
 	#set1 = wall_parent.get_node("maze1") #a set of walls that makes up the first part of the maze
 	#set2 = wall_parent.get_node("maze2")
