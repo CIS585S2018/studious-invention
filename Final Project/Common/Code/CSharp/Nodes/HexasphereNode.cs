@@ -62,7 +62,6 @@ public class HexasphereNode : Node
         //Create all the scenes that appear on tiles
         foreach (var tile in hexasphere.GetTiles()) {
             CreateSceneOnTile(tile, radius / numberOfTiles);
-            CreateMeshForTile(tile, radius / numberOfTiles);
         }
     }
 
@@ -89,6 +88,7 @@ public class HexasphereNode : Node
 
     // Creates the hexagon or pentagon instance for the tile.
     private void CreateSceneOnTile(Tile tile, float sphereScale) {
+		bool createMeshForTile = true;
         decimal tileCenterX = 0;
         decimal tileCenterY = 0;
         decimal tileCenterZ = 0;
@@ -161,6 +161,9 @@ public class HexasphereNode : Node
         }
         if (groundTest != null)
         {
+			if (points.Count == 5 && placedPentagons == 1) {
+				createMeshForTile = false;
+				}
             //Put the instance on the tile and make it face the center of the sphere
             //This should be all that is needed but the sections are rotated perpendicular
             groundTest.LookAtFromPosition(tileCenterPoint, sphereCenterPoint, new Vector3(0f, 1f, 0f));
@@ -207,6 +210,9 @@ public class HexasphereNode : Node
             var newWorldPoint = groundTest.ToGlobal(localOriginalFirstPoint);
             //GD.Print("Difference: " + (worldGeneratedFirstPoint - newWorldPoint));
         }
+		if (createMeshForTile) {
+            CreateMeshForTile(tile, sphereScale);
+			}
     }
 
     // Creates a wire mesh and places the spheres to make sure the tile is aligned.
