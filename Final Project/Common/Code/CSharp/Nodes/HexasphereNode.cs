@@ -10,6 +10,8 @@ public class HexasphereNode : Node
     PackedScene redSphereMeshScene, greenSphereMeshScene, blueSphereMeshScene, centerStandingPlatform;
     List<PackedScene> hexagons = new List<PackedScene>();
     List<PackedScene> pentagons = new List<PackedScene>();
+    PackedScene tower = null;
+    int placedPentagons = 0;
     Random random = new Random();
     public override void _Ready()
     {
@@ -37,6 +39,7 @@ public class HexasphereNode : Node
 		//pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
 		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/Tree/TreePentagon.tscn"));
 		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
+		tower = (PackedScene)ResourceLoader.Load("res://pentagon_levels/Tower/Tower.tscn");
 		
         //pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jacob/Main Scene.tscn"));		
 		
@@ -76,6 +79,11 @@ public class HexasphereNode : Node
         {
             return null;
         }
+        if (placedPentagons == 0) {
+            placedPentagons++;
+            return (Spatial)tower.Instance();
+        }
+        placedPentagons++;
         return (Spatial)pentagons[random.Next(pentagons.Count)].Instance();
     }
 
