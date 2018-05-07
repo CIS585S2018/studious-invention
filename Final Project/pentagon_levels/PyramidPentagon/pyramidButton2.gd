@@ -22,7 +22,7 @@ func _ready():
 	# Initialization here
 	self.get_node("Area").set_meta("type","usable")
 	self.get_node("Area").set_meta("name","button")
-	#player = get_tree().get_root().get_node("PyramidDemo/player")
+	player = get_tree().get_root().get_node("Node/player")
 	teleport_spot = get_node("../teleport_spot")
 	wall = get_node("../wall")
 	wall.visible = false
@@ -88,7 +88,10 @@ func use(object):
 	#	3:
 	#		swap_to_4()
 	#state += 1
-	player.translation = teleport_spot.translation
+	#need to figure out how to get global transform, not just local 
+	#player.translation = teleport_spot.global_transform.origin
+	player.global_translate(teleport_spot.global_transform.origin)
+	#player.translation = teleport_spot.translation
 	#wall.queue_free() 
 	wall.scale.y = 0
 	wall.visible = false

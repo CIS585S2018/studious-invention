@@ -13,6 +13,7 @@ public class HexasphereNode : Node
     PackedScene tower = null;
 	PackedScene pyramid = null; 
     int placedPentagons = 0;
+	bool isPyramid = false; 
     Random random = new Random();
     public override void _Ready()
     {
@@ -79,14 +80,22 @@ public class HexasphereNode : Node
     {
         if (pentagons.Count == 0)
         {
+			isPyramid = false; 
             return null;
         }
         if (placedPentagons == 0) {
             placedPentagons++;
+			isPyramid = false; 
             return (Spatial)tower.Instance();
         }
         placedPentagons++;
-        return (Spatial)pentagons[random.Next(pentagons.Count)].Instance();
+		int rand = random.Next(pentagons.Count);
+		if(rand == 2)
+		{
+			isPyramid = true;
+		}
+		else isPyramid = false; 
+        return (Spatial)pentagons[rand].Instance();
     }
 
     // Creates the hexagon or pentagon instance for the tile.
@@ -151,9 +160,10 @@ public class HexasphereNode : Node
             //GD.Print("Pentagon Radius: " + polygonRadius + ", side length: " + polygonSideLength);
             //Create instance
             groundTest = GetRandomPentagon();
-			if (groundTest == pyramid.Instance())
+			if (isPyramid)
 			{ 
 				//tile.queue_free(); 
+				createMeshForTile = false;
 			}
         }
         else if (points.Count == 6)

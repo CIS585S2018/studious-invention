@@ -19,7 +19,7 @@ func _ready():
 	# Initialization here
 	self.get_node("Area").set_meta("type","usable")
 	self.get_node("Area").set_meta("name","button")	
-	#player = get_tree().get_root().get_node("PyramidDemo/player")
+	player = get_tree().get_root().get_node("Node/player")
 	teleport_spot = get_node("../teleport_spot")
 	#wall_parent = get_tree().get_root().get_node("maze/walls")
 	#set1 = wall_parent.get_node("maze1") #a set of walls that makes up the first part of the maze
@@ -80,5 +80,6 @@ func use(object):
 	#	3:
 	#		swap_to_4()
 	#state += 1
-	player.translation = teleport_spot.translation
+	player.global_translate(teleport_spot.global_transform.origin)
+	#player.translation = teleport_spot.translation
 	pass
