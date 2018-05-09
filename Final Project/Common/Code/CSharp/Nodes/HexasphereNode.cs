@@ -24,21 +24,21 @@ public class HexasphereNode : Node
         greenSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Green Sphere.tscn");
         redSphereMeshScene = (PackedScene)ResourceLoader.Load("res://Common/Assets/Red Sphere.tscn");
         
-        //pentagons.Add((PackedScene)ResourceLoader.Load("res://Pentagon Levels/Filip/pentagon_level.tscn"));
-		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Pentagon Levels/Filip/pentagon_level.tscn"));
+        pentagons.Add((PackedScene)ResourceLoader.Load("res://Pentagon Levels/Filip/pentagon_level.tscn"));
+		hexagons.Add((PackedScene)ResourceLoader.Load("res://Pentagon Levels/Filip/pentagon_level.tscn"));
 		
 		//pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
-		//pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/simpler_hexa_maze.tscn"));
-		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
+		pentagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/simpler_hexa_maze.tscn"));
+		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
 		
 		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));
 		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Common/Assets/Hexagon.tscn"));
 		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/simpler_hexa_maze.tscn"));
 		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Jan/hexa_maze.tscn"));
-		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Scott/level.tscn"));
-		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Pavel/world1.tscn"));
-		//hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Generic Square Maze/Generic Maze.tscn"));
-		//pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
+		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Scott/level.tscn"));
+		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Pavel/world1.tscn"));
+		hexagons.Add((PackedScene)ResourceLoader.Load("res://Hexagon Levels/Generic Square Maze/Generic Maze.tscn"));
+		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
 		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/Tree/TreePentagon.tscn"));
 		pentagons.Add((PackedScene)ResourceLoader.Load("res://pentagon_levels/filip/pentagon_level.tscn"));
 		pyramid = (PackedScene)ResourceLoader.Load("res://pentagon_levels/PyramidPentagon/PuzzlePyramid.tscn");
